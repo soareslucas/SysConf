@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content">
+                <h1 class="page-heading"><i class="fa fa-car icon-sidebar"></i>  Detalhes da faccionista</h1>
+                <!-- End page heading -->
+
+                <!-- Begin breadcrumb -->
+                <ol class="breadcrumb default square rsaquo sm">
+                    <li><a href="index.xhtml"><i class="fa fa-home"></i></a></li>
+                    <li><a href="faccionista-list.xhtml">Lista de Faccionistas</a></li>
+                    <li class="active">Detalhes da faccionista</li>
+                </ol>
+                <!-- End breadcrumb -->
+
+                <div class="the-box">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <i class="fa fa-car icon-sidebar"></i>
+                            DETALHES DA FACCIONISTA
+                            <br/>
+                        </div>
+                    </div>
+                    <h:panelGrid columns="2">
+
+
+                        <h:outputText value="NOME:" style="font-weight:bold;padding-left:20px;"/>
+                        <h:outputText value="#{faccionistaBean.selectedFaccionista.nome}" style="padding-left:20px;"/>
+
+                        <h:outputText value="ENDEREÇO:" style="font-weight:bold;padding-left:20px;"/>
+                        <h:outputText value="#{faccionistaBean.selectedFaccionista.endereco}" style="padding-left:20px;"/>
+
+                        <h:outputText value="CIDADE:" style="font-weight:bold;padding-left:20px;"/>
+                        <h:outputText value="#{faccionistaBean.selectedFaccionista.cidade}" style="padding-left:20px;"/>
+
+                        <h:outputText value="CEP:" style="font-weight:bold;padding-left:20px;"/>
+                        <h:outputText value="#{faccionistaBean.selectedFaccionista.cep}" style="padding-left:20px;"/>
+
+                        <h:outputText value="E-MAIL:" style="font-weight:bold;padding-left:20px;"/>
+                        <h:outputText value="#{faccionistaBean.selectedFaccionista.email}" style="padding-left:20px;"/>
+
+                        <h:outputText value="TELEFONE:" style="font-weight:bold;padding-left:20px;"/>
+                        <h:outputText value="#{faccionistaBean.selectedFaccionista.telefone}" style="padding-left:20px;"/>
+
+                        <h:outputText value="CELULAR:" style="font-weight:bold;padding-left:20px;"/>
+                        <h:outputText value="#{faccionistaBean.selectedFaccionista.celular}" style="padding-left:20px;"/>
+
+                        <h:outputText value="DATA DE NASCIMENTO:" style="font-weight:bold;padding-left:20px;"/>
+                        <h:outputText value="#{faccionistaBean.selectedFaccionista.dataNascimento}" style="padding-left:20px;">
+                            <f:convertDateTime pattern="EEEE, dd/MM/yyyy"
+                                               timeZone="America/Sao_Paulo"/>
+                        </h:outputText>
+
+
+                    </h:panelGrid>
+                    <br/>
+
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

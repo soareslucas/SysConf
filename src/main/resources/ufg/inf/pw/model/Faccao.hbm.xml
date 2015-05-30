@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2015 2:48:21 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ufg.inf.pw.model.Faccao" table="faccao" catalog="confeccao" optimistic-lock="version">
+        <id name="idfaccao" type="int">
+            <column name="idfaccao" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="faccionista" class="ufg.inf.pw.model.Faccionista" fetch="select">
+            <column name="idfaccionista" />
+        </many-to-one>
+        <property name="dataEntrega" type="timestamp">
+            <column name="data_entrega" length="19" />
+        </property>
+        <property name="dataColeta" type="timestamp">
+            <column name="data_coleta" length="19" />
+        </property>
+        <set name="pecas" table="faccao_has_peca" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="faccao_idfaccao" not-null="true" />
+            </key>
+            <many-to-many entity-name="ufg.inf.pw.model.Peca">
+                <column name="pecao_dpeca" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="aviamentos" table="faccao_has_aviamento" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="faccao_idfaccao" not-null="true" />
+            </key>
+            <many-to-many entity-name="ufg.inf.pw.model.Aviamento">
+                <column name="aviamento_idaviamento" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

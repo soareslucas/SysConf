@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content">
+                <!-- Begin page heading -->
+
+                <!-- Page Title -->
+                <div class="section section-breadcrumbs">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Login</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="container">
+                        <div class = "row">
+                            <div class="col-sm-5">
+                                <div class="basic-login">
+                                    <form action="login" method="post">
+                                        <div class="form-group">
+                                            <label for="login-username"><b>Usuário</b></label>
+                                            <div class="input-group" data-validate="length" data-length="5">
+                                                <input class="form-control" name="login-username" type="text" placeholder=""  required="true"/>
+                                                <span class="input-group-addon glyphicon glyphicon-user"></span>
+                                            </div>	
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="login-password"><i class="icon-lock"></i> <b>Senha</b></label>
+                                            <div class="input-group" data-validate="length" data-length="5">
+                                                <input class="form-control" name="login-password" type="password" placeholder="" required="true" />
+                                                <span class="input-group-addon glyphicon glyphicon-lock" ></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="checkbox"/> Lembrar-me
+                                        </div>	
+                                        <div class="form-group">
+                                            <a href="password-reset.html" class="forgot-password">Esqueceu a senha?</a>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Login</button>												
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

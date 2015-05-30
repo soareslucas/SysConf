@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content">
+
+
+                <!-- Page Title -->
+                <div class="section section-breadcrumbs">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Inicio</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="boxes">
+                                <div class="service-wrapper">
+                                    <h1><span class="glyphicon glyphicon-stats"></span></h1>						
+                                    <h3>Relatórios</h3>
+                                    <p>Gráfico com base no banco de dados será inserido</p>
+                                    <a href="#" class="btn">Veja Mais</a>
+                                </div>
+                            </div>
+                            <div class="boxes">
+                                <div class="service-wrapper">
+                                    <h1><span class="glyphicon glyphicon-tasks"></span></h1>
+                                    <h3>Proximas Facções Concluidas</h3>
+                                    <div class = "bordas">		
+                                        <div class="titulo01">
+                                            <div class = "row" >
+                                                <div class="col-md-6" >Nome Faccionista</div>
+                                                <div class="col-md-6">Data de Coleta</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class = "bordas">	
+                                        <div class = "row" >
+                                            <div class="col-md-6">Faccionista01</div>
+                                            <div class="col-md-6">01/06/2015</div>
+                                        </div>
+                                    </div>
+                                    <div class="bordas">	
+                                        <div class = "row" >
+                                            <div class="col-md-6">Faccionista02</div>
+                                            <div class="col-md-6" >03/06/2015</div>
+                                        </div>
+                                    </div>
+                                    <div class="bordas">	
+                                        <div class = "row" >
+                                            <div class="col-md-6" >Faccionista03</div>
+                                            <div class="col-md-6" >05/06/2015</div>
+                                        </div>	
+                                    </div>					
+                                    <div class="margeando">
+                                        <a href="#" class="btn">Veja Mais</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="boxes2">
+                            <div class="panel panel-default">                	
+                                <div class="panel-heading">
+                                    <h4><span class="glyphicon glyphicon-globe "></span><b> Localização </b></h4></div>						
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15293.656117057932!2d-49.2622882926298!3d-16.605977383783582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sgoiania+ufg!5e0!3m2!1spt-BR!2sbr!4v1430397732133"
+                                        width= "100%" height="300" frameborder="0" style="border:1px">
+                                </iframe>
+                            </div>
+                        </div>	
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2015 2:48:21 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ufg.inf.pw.model.Peca" table="peca" catalog="confeccao" optimistic-lock="version">
+        <id name="idpeca" type="int">
+            <column name="idpeca" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="modelo" class="ufg.inf.pw.model.Modelo" fetch="select">
+            <column name="referencia_modelo" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="45" />
+        </property>
+        <set name="faccaos" table="faccao_has_peca" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="pecao_dpeca" not-null="true" />
+            </key>
+            <many-to-many entity-name="ufg.inf.pw.model.Faccao">
+                <column name="faccao_idfaccao" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

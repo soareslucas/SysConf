@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2015 2:48:21 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ufg.inf.pw.model.Faccionista" table="faccionista" catalog="confeccao" optimistic-lock="version">
+        <id name="idfaccionista" type="int">
+            <column name="idfaccionista" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="45" />
+        </property>
+        <property name="telefone" type="string">
+            <column name="telefone" length="45" />
+        </property>
+        <property name="celular" type="string">
+            <column name="celular" length="45" />
+        </property>
+        <property name="endereco" type="string">
+            <column name="endereco" length="45" />
+        </property>
+        <property name="cep" type="string">
+            <column name="cep" length="45" />
+        </property>
+        <property name="cidade" type="string">
+            <column name="cidade" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="dataNascimento" type="timestamp">
+            <column name="data_nascimento" length="19" />
+        </property>
+        <set name="faccaos" table="faccao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idfaccionista" />
+            </key>
+            <one-to-many class="ufg.inf.pw.model.Faccao" />
+        </set>
+    </class>
+</hibernate-mapping>
