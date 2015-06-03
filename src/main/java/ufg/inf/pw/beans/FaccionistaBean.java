@@ -5,30 +5,29 @@
  */
 package ufg.inf.pw.beans;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
-import javax.faces.view.ViewScoped;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 import ufg.inf.pw.DAO.FaccionistaDAO;
 import ufg.inf.pw.model.Faccionista;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
 /**
  *
  * @author Lucas
  */
-@Named(value = "faccionistaBean")
+@ManagedBean
 @ViewScoped
-public class FaccionistaBean extends AbstractBean {
+public class FaccionistaBean extends AbstractBean implements Serializable {
 
     private Faccionista faccionista = new Faccionista();
-    ;
     private Faccionista selectedFaccionista;
     private FaccionistaDAO faccionistaDAO;
     private List<Faccionista> faccionistas;

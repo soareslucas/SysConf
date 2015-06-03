@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 30, 2015 2:48:21 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jun 3, 2015 1:24:18 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ufg.inf.pw.model.Peca" table="peca" catalog="confeccao" optimistic-lock="version">
-        <id name="idpeca" type="int">
+        <id name="idpeca" type="java.lang.Integer">
             <column name="idpeca" />
             <generator class="identity" />
         </id>

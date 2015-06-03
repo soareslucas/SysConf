@@ -8,7 +8,7 @@ import javax.faces.context.FacesContext;
  *
  * @author Lucas Soares
  */
-public class AbstractBean implements Serializable{
+public class AbstractBean {
 
     public AbstractBean() {
         super();

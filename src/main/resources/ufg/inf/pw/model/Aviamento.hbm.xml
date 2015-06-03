@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 30, 2015 2:48:21 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jun 3, 2015 1:24:18 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ufg.inf.pw.model.Aviamento" table="aviamento" catalog="confeccao" optimistic-lock="version">
-        <id name="idaviamento" type="int">
+        <id name="idaviamento" type="java.lang.Integer">
             <column name="idaviamento" />
             <generator class="identity" />
         </id>
-       
         <property name="nome" type="string">
             <column name="nome" length="45" />
         </property>

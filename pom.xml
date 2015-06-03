@@ -4,9 +4,8 @@
 
     <groupId>ufg.inf.pw</groupId>
     <artifactId>sysconf</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
-
     <name>SysConf</name>
 
     <properties>
@@ -18,6 +17,7 @@
         <tomcat-dbcp.version>7.0.42</tomcat-dbcp.version>
         <guava.version>17.0</guava.version>
     </properties>
+    
     <dependencies>
         
         <dependency>
@@ -73,10 +73,10 @@
         </dependency>
         
         <dependency>
-	<groupId>net.sf.jasperreports</groupId>
-	<artifactId>jasperreports</artifactId>
-	<version>4.8.0</version>
-</dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>4.8.0</version>
+        </dependency>
 
         
 
@@ -98,6 +98,12 @@
             <artifactId>google-collections</artifactId>
             <version>1.0</version>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>hibernate-jpamodelgen-4.3.1.Final</artifactId>
+            <version>SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax</groupId>

@@ -1,5 +1,5 @@
 package ufg.inf.pw.model;
-// Generated Apr 30, 2015 2:48:21 PM by Hibernate Tools 4.3.1
+// Generated Jun 3, 2015 1:24:18 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class Peca  implements java.io.Serializable {
 
 
-     private int idpeca;
+     private Integer idpeca;
      private Modelo modelo;
      private String nome;
      private Set faccaos = new HashSet(0);
@@ -19,22 +19,17 @@ public class Peca  implements java.io.Serializable {
     public Peca() {
     }
 
-	
-    public Peca(int idpeca) {
-        this.idpeca = idpeca;
-    }
-    public Peca(int idpeca, Modelo modelo, String nome, Set faccaos) {
-       this.idpeca = idpeca;
+    public Peca(Modelo modelo, String nome, Set faccaos) {
        this.modelo = modelo;
        this.nome = nome;
        this.faccaos = faccaos;
     }
    
-    public int getIdpeca() {
+    public Integer getIdpeca() {
         return this.idpeca;
     }
     
-    public void setIdpeca(int idpeca) {
+    public void setIdpeca(Integer idpeca) {
         this.idpeca = idpeca;
     }
     public Modelo getModelo() {

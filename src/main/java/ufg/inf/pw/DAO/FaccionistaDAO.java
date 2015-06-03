@@ -25,7 +25,7 @@ public class FaccionistaDAO {
 
     private EntityManager getEntityManager() {
         EntityManagerFactory factory = Persistence
-                .createEntityManagerFactory("ConfeccaoPU");
+                .createEntityManagerFactory("sysconfPU");
         if (entityManager == null) {
             entityManager = factory.createEntityManager();
         }

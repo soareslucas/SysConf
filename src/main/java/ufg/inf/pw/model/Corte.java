@@ -1,5 +1,5 @@
 package ufg.inf.pw.model;
-// Generated Apr 30, 2015 2:48:21 PM by Hibernate Tools 4.3.1
+// Generated Jun 3, 2015 1:24:18 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class Corte  implements java.io.Serializable {
 
 
-     private int idcorte;
+     private Integer idcorte;
      private String nome;
      private String foto;
      private Set modelos = new HashSet(0);
@@ -19,22 +19,17 @@ public class Corte  implements java.io.Serializable {
     public Corte() {
     }
 
-	
-    public Corte(int idcorte) {
-        this.idcorte = idcorte;
-    }
-    public Corte(int idcorte, String nome, String foto, Set modelos) {
-       this.idcorte = idcorte;
+    public Corte(String nome, String foto, Set modelos) {
        this.nome = nome;
        this.foto = foto;
        this.modelos = modelos;
     }
    
-    public int getIdcorte() {
+    public Integer getIdcorte() {
         return this.idcorte;
     }
     
-    public void setIdcorte(int idcorte) {
+    public void setIdcorte(Integer idcorte) {
         this.idcorte = idcorte;
     }
     public String getNome() {
