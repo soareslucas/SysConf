@@ -49,11 +49,38 @@
     
     <navigation-rule>
         <navigation-case>
-            <from-outcome>faccionista-detail</from-outcome>
-            <to-view-id>/faccionista-detail.xhtml</to-view-id>
+            <from-outcome>faccionista-details</from-outcome>
+            <to-view-id>/faccionista-details.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    
+        <!-- ================== MODELO CONFIGURATION ================== -->
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>modelo-list</from-outcome>
+            <to-view-id>/modelo-list.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>modelo-new</from-outcome>
+            <to-view-id>/modelo-new.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>modelo-details</from-outcome>
+            <to-view-id>/modelo-details.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    
     
     
   

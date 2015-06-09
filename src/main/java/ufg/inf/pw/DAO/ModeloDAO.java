@@ -9,17 +9,17 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import ufg.inf.pw.model.Faccionista;
+import ufg.inf.pw.model.Modelo;
 
 /**
  *
  * @author Lucas
  */
-public class FaccionistaDAO {
+public class ModeloDAO {
 
     protected EntityManager entityManager;
 
-    public FaccionistaDAO() {
+    public ModeloDAO() {
         entityManager = getEntityManager();
     }
 
@@ -32,61 +32,56 @@ public class FaccionistaDAO {
         return entityManager;
     }
 
-    public Faccionista getById(final int id) {
-        return entityManager.find(Faccionista.class, id);
+    public Modelo getById(final int id) {
+        return entityManager.find(Modelo.class, id);
     }
-    
-    public int getNextId(){
-     Integer id =  (Integer)entityManager.createNativeQuery("SELECT idfaccionista FROM faccionista f ORDER BY f.idfaccionista DESC LIMIT 1").getSingleResult();
-     return id + 1;
+
+    public int getNextId() {
+        Integer id = (Integer) entityManager.createNativeQuery("SELECT idmodelo FROM modelo f ORDER BY f.idmodelo DESC LIMIT 1").getSingleResult();
+        return id + 1;
     }
-    
 
     @SuppressWarnings("unchecked")
-    public List<Faccionista> findAll() {
-        return entityManager.createQuery("FROM " + Faccionista.class.getName() + " f ORDER BY f.nome")
+    public List<Modelo> findAll() {
+        return entityManager.createQuery("FROM " + Modelo.class.getName() + " f ORDER BY f.idmodelo")
                 .getResultList();
     }
 
-    public void persist(Faccionista faccionista) {
+    public void persist(Modelo modelo) {
         try {
-            
+
             entityManager.getTransaction().begin();
-            entityManager.persist(faccionista);
+            entityManager.persist(modelo);
             entityManager.getTransaction().commit();
-            entityManager.refresh(faccionista);
+            entityManager.refresh(modelo);
         } catch (Exception ex) {
             ex.printStackTrace();
             entityManager.getTransaction().rollback();
         }
     }
 
-    public void merge(Faccionista faccionista) {
+    public void merge(Modelo modelo) {
         try {
             entityManager.getTransaction().begin();
-            Faccionista persisted = getById(faccionista.getIdfaccionista());
-            persisted.setNome(faccionista.getNome());
-            persisted.setDataNascimento(faccionista.getDataNascimento());
-            persisted.setEndereco(faccionista.getEndereco());
-            persisted.setCidade(faccionista.getCidade());
-            persisted.setCep(faccionista.getCep());
-            persisted.setTelefone(faccionista.getTelefone());
-            persisted.setCelular(faccionista.getCelular());
-            persisted.setEmail(faccionista.getEmail());
+            Modelo persisted = getById(modelo.getIdmodelo());
+            persisted.setNome(modelo.getNome());
+            persisted.setDescricao(modelo.getDescricao());
+            persisted.setFoto(modelo.getFoto());
+
             entityManager.merge(persisted);
             entityManager.getTransaction().commit();
-            entityManager.refresh(faccionista);
+            entityManager.refresh(modelo);
         } catch (Exception ex) {
             ex.printStackTrace();
             entityManager.getTransaction().rollback();
         }
     }
 
-    public void remove(Faccionista faccionista) {
+    public void remove(Modelo modelo) {
         try {
             entityManager.getTransaction().begin();
-            faccionista = entityManager.find(Faccionista.class, faccionista.getIdfaccionista());
-            entityManager.remove(faccionista);
+            modelo = entityManager.find(Modelo.class, modelo.getIdmodelo());
+            entityManager.remove(modelo);
             entityManager.getTransaction().commit();
         } catch (Exception ex) {
             System.out.println(ex.toString());
@@ -96,8 +91,8 @@ public class FaccionistaDAO {
 
     public void removeById(final int id) {
         try {
-            Faccionista faccionista = getById(id);
-            remove(faccionista);
+            Modelo modelo = getById(id);
+            remove(modelo);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

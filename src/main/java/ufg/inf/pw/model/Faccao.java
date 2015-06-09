@@ -1,5 +1,5 @@
 package ufg.inf.pw.model;
-// Generated Jun 3, 2015 1:24:18 PM by Hibernate Tools 4.3.1
+// Generated Jun 4, 2015 12:12:38 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -17,17 +17,17 @@ public class Faccao  implements java.io.Serializable {
      private Date dataEntrega;
      private Date dataColeta;
      private Set pecas = new HashSet(0);
-     private Set aviamentos = new HashSet(0);
+     private Set suprimentos = new HashSet(0);
 
     public Faccao() {
     }
 
-    public Faccao(Faccionista faccionista, Date dataEntrega, Date dataColeta, Set pecas, Set aviamentos) {
+    public Faccao(Faccionista faccionista, Date dataEntrega, Date dataColeta, Set pecas, Set suprimentos) {
        this.faccionista = faccionista;
        this.dataEntrega = dataEntrega;
        this.dataColeta = dataColeta;
        this.pecas = pecas;
-       this.aviamentos = aviamentos;
+       this.suprimentos = suprimentos;
     }
    
     public Integer getIdfaccao() {
@@ -65,12 +65,12 @@ public class Faccao  implements java.io.Serializable {
     public void setPecas(Set pecas) {
         this.pecas = pecas;
     }
-    public Set getAviamentos() {
-        return this.aviamentos;
+    public Set getSuprimentos() {
+        return this.suprimentos;
     }
     
-    public void setAviamentos(Set aviamentos) {
-        this.aviamentos = aviamentos;
+    public void setSuprimentos(Set suprimentos) {
+        this.suprimentos = suprimentos;
     }
 
 

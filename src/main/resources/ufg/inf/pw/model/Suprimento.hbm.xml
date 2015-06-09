@@ -3,23 +3,20 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jun 4, 2015 12:12:44 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="ufg.inf.pw.model.Peca" table="peca" catalog="confeccao" optimistic-lock="version">
-        <id name="idpeca" type="java.lang.Integer">
-            <column name="idpeca" />
+    <class name="ufg.inf.pw.model.Suprimento" table="suprimento" catalog="confeccao" optimistic-lock="version">
+        <id name="idsuprimento" type="java.lang.Integer">
+            <column name="idsuprimento" />
             <generator class="identity" />
         </id>
-        <many-to-one name="modelo" class="ufg.inf.pw.model.Modelo" fetch="select">
-            <column name="referencia_modelo" />
+        <many-to-one name="aviamento" class="ufg.inf.pw.model.Aviamento" fetch="select">
+            <column name="aviamento_idaviamento" />
         </many-to-one>
-        <property name="nome" type="string">
-            <column name="nome" length="45" />
-        </property>
         <property name="quantidade" type="java.lang.Integer">
             <column name="quantidade" />
         </property>
-        <set name="faccaos" table="faccao_has_peca" inverse="false" lazy="true" fetch="select">
+        <set name="faccaos" table="faccao_has_suprimento" inverse="false" lazy="true" fetch="select">
             <key>
-                <column name="pecao_dpeca" not-null="true" />
+                <column name="suprimento_idsuprimento" not-null="true" />
             </key>
             <many-to-many entity-name="ufg.inf.pw.model.Faccao">
                 <column name="faccao_idfaccao" not-null="true" />

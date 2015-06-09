@@ -1,5 +1,5 @@
 package ufg.inf.pw.model;
-// Generated Jun 3, 2015 1:24:18 PM by Hibernate Tools 4.3.1
+// Generated Jun 4, 2015 12:12:38 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,15 +14,15 @@ public class Aviamento  implements java.io.Serializable {
      private Integer idaviamento;
      private String nome;
      private String unidadeMedida;
-     private Set faccaos = new HashSet(0);
+     private Set suprimentos = new HashSet(0);
 
     public Aviamento() {
     }
 
-    public Aviamento(String nome, String unidadeMedida, Set faccaos) {
+    public Aviamento(String nome, String unidadeMedida, Set suprimentos) {
        this.nome = nome;
        this.unidadeMedida = unidadeMedida;
-       this.faccaos = faccaos;
+       this.suprimentos = suprimentos;
     }
    
     public Integer getIdaviamento() {
@@ -46,12 +46,12 @@ public class Aviamento  implements java.io.Serializable {
     public void setUnidadeMedida(String unidadeMedida) {
         this.unidadeMedida = unidadeMedida;
     }
-    public Set getFaccaos() {
-        return this.faccaos;
+    public Set getSuprimentos() {
+        return this.suprimentos;
     }
     
-    public void setFaccaos(Set faccaos) {
-        this.faccaos = faccaos;
+    public void setSuprimentos(Set suprimentos) {
+        this.suprimentos = suprimentos;
     }
 
 

@@ -25,10 +25,29 @@
                         CADASTRO DE FACCIONISTA
                         <br/>
                     </div>
-                    <h:form id="novaFaccionistaForm">
+                    <h:form id="novaFaccionistaForm" >
 
 
-                        <div class="the-box" style="padding: 5px;">
+                        <div class="the-box" style="padding: 5px;" >
+
+
+
+                            <h:panelGrid columns="1" width="50%">
+                                <div class="form-group">
+                                    <!-- Nome do Fiscal -->
+                                    <h:outputLabel for="id"
+                                                   value="IDENTIFICADOR:"
+                                                   style="font-weight: bold"/>
+                                    <p:inputText id="id"
+                                                 required="true" style="width: 10%"
+                                                 value="#{faccionistaBean.nextId}"
+                                                 disabled="true"
+                                                 requiredMessage="Informe o nome do nova Faccionista"
+                                                 label="nome"/>
+                                    <p:message for="nome" />
+
+                                </div>
+                            </h:panelGrid>
 
 
 
@@ -39,7 +58,7 @@
                                                    value="NOME:"
                                                    style="font-weight: bold"/>
                                     <p:inputText id="nome"
-                                                 required="true" style="width: 100%"
+                                                 required="true" style="width: 70%"
                                                  value="#{faccionistaBean.faccionista.nome}"
                                                  requiredMessage="Informe o nome do nova Faccionista"
                                                  label="nome"/>
@@ -49,15 +68,15 @@
 
 
 
-                            <h:panelGrid columns="2" width="30%">
-                                <h:panelGrid columns="1">
+                            <h:panelGrid columns="3" width="40%">
+                                <h:panelGrid columns="1"  width="100%">
                                     <div class="form-group">
                                         <!-- Nome do Fiscal -->
                                         <h:outputLabel for="telefone"
                                                        value="TELEFONE:"
                                                        style="font-weight: bold"/>
                                         <p:inputMask id="telefone"
-                                                     required="true"       style="width:100%"
+                                                     required="true"       style="width:80%"
                                                      value="#{faccionistaBean.faccionista.telefone}"
                                                      requiredMessage="Informe o telefone da nova faccionista"
                                                      label="telefone" mask="(999) 9999-9999"/>
@@ -65,7 +84,7 @@
                                     </div>
                                 </h:panelGrid>
 
-                                <h:panelGrid columns="1">
+                                <h:panelGrid columns="1" width="100%">
                                     <div class="form-group">
                                         <!-- Nome do Fiscal -->
                                         <h:outputLabel for="celular"
@@ -73,7 +92,7 @@
                                                        style="font-weight: bold"/> 
 
                                         <p:inputMask id="celular"
-                                                     required="true" style="width: 100%"
+                                                     required="true" style="width: 80%"
                                                      value="#{faccionistaBean.faccionista.celular}"
                                                      requiredMessage="Informe o telefone da nova faccionista"
                                                      label="celular"
@@ -82,8 +101,27 @@
                                         <p:message for="celular" />
                                     </div>
                                 </h:panelGrid>
+                                
+                                    <h:panelGrid columns="1" >
+                                    <div class="form-group">
+                                        <!-- CEP da faccionista-->
+                                        <h:outputLabel for="cep"
+                                                       value="CEP:"
+                                                       style="font-weight: bold"/>
+                                        <p:inputMask id="cep"
+                                                     required="true" style="width: 60%"
+                                                     value="#{faccionistaBean.faccionista.cep}"
+                                                     requiredMessage="Informe o cep da nova faccionista"
+                                                     label="cep" mask="99999-999"/>
+                                        <p:message for="cep" />
+                                    </div>
+                                </h:panelGrid>
+                                
+                                
 
                             </h:panelGrid>
+
+
 
 
 
@@ -92,11 +130,11 @@
                                     <!-- Nome do Fiscal -->
                                     <h:outputLabel for="endereco"
                                                    value="ENDEREÇO:"
-                                                   style="font-weight: bold"/> 
+                                                   style="font-weight: bold"/>
                                     <p:inputText id="endereco"
-                                                 required="true" style="width: 100%"
+                                                 required="true" style="width: 70%"
                                                  value="#{faccionistaBean.faccionista.endereco}"
-                                                 requiredMessage="Informe o endereço da nova faccionista"
+                                                 requiredMessage="Informe o endereco do nova Faccionista"
                                                  label="endereco"/>
                                     <p:message for="endereco" />
                                 </div>
@@ -107,21 +145,10 @@
 
 
 
-                            <h:panelGrid columns="2" width="30%">
-                                <h:panelGrid columns="1" >
-                                    <div class="form-group">
-                                        <!-- CEP da faccionista-->
-                                        <h:outputLabel for="cep"
-                                                       value="CEP:"
-                                                       style="font-weight: bold"/>
-                                        <p:inputMask id="cep"
-                                                     required="true" style="width: 70%"
-                                                     value="#{faccionistaBean.faccionista.cep}"
-                                                     requiredMessage="Informe o cep da nova faccionista"
-                                                     label="cep" mask="99999-999"/>
-                                        <p:message for="cep" />
-                                    </div>
-                                </h:panelGrid>
+
+
+                            <h:panelGrid columns="2" width="40%">
+                            
 
                                 <h:panelGrid columns="1">
                                     <div class="form-group">
@@ -137,38 +164,15 @@
                                         <p:message for="cidade" />
                                     </div>
                                 </h:panelGrid>
-
-                            </h:panelGrid>
-
-
-
-
-                            <h:panelGrid columns="1" width="40%">
-                                <div class="form-group">
-                                    <!-- Nome do Fiscal -->
-                                    <h:outputLabel for="email"
-                                                   value="E-MAIL:"
-                                                   style="font-weight: bold"/> 
-                                    <p:inputText id="email"
-                                                 required="true" style="width: 100%"
-                                                 value="#{faccionistaBean.faccionista.email}"
-                                                 requiredMessage="Informe o email da nova faccionista"
-                                                 label="email"/>
-                                    <p:message for="email" />
-                                </div>
-                            </h:panelGrid>
-
-
-
-
-                            <h:panelGrid columns="1">
+                                
+                                <h:panelGrid columns="1"  style="width: 50%">
                                 <div class="form-group">
                                     <h:outputLabel for="dataNascimento"
                                                    value="DATA DE NASCIMENTO:"
                                                    style="font-weight: bold"/>
                                     <p:calendar id="dataNascimento"
                                                 locale="pt_BR"
-                                                style="width:100%"
+                                                style="width: 100%"
                                                 showButtonPanel="true"
                                                 effect="explode"
                                                 navigator="true"
@@ -183,7 +187,33 @@
                                 </div>
 
 
-                            </h:panelGrid>               
+                            </h:panelGrid>
+                                
+
+                            </h:panelGrid>
+
+
+
+
+                            <h:panelGrid columns="1" width="50%">
+                                <div class="form-group">
+                                    <!-- Nome do Fiscal -->
+                                    <h:outputLabel for="email"
+                                                   value="E-MAIL:"
+                                                   style="font-weight: bold"/> 
+                                    <p:inputText id="email"
+                                                 required="true" style="width: 70%"
+                                                 value="#{faccionistaBean.faccionista.email}"
+                                                 requiredMessage="Informe o email da nova faccionista"
+                                                 label="email"/>
+                                    <p:message for="email" />
+                                </div>
+                            </h:panelGrid>
+
+
+
+
+                                           
 
 
 
@@ -207,61 +237,6 @@
                 </div>
             </ui:define>
 
-            <ui:define name="javascript" >
-                <script src="assets/js/bootstrap.min.js"></script>
-                <script src="assets/plugins/retina/retina.min.js"></script>
-                <script src="assets/plugins/nicescroll/jquery.nicescroll.js"></script>
-                <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-                <script src="assets/plugins/backstretch/jquery.backstretch.min.js"></script>
-
-                <!-- PLUGINS -->
-                <script src="assets/plugins/skycons/skycons.js"></script>
-                <script src="assets/plugins/prettify/prettify.js"></script>
-                <script src="assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-                <script src="assets/plugins/owl-carousel/owl.carousel.min.js"></script>
-                <script src="assets/plugins/chosen/chosen.jquery.min.js"></script>
-                <script src="assets/plugins/icheck/icheck.min.js"></script>
-                <script src="assets/plugins/timepicker/bootstrap-timepicker.js"></script>
-                <script src="assets/plugins/mask/jquery.mask.min.js"></script>
-                <script src="assets/plugins/validator/bootstrapValidator.min.js"></script>
-                <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
-                <script src="assets/plugins/datatable/js/bootstrap.datatable.js"></script>
-                <script src="assets/plugins/summernote/summernote.min.js"></script>
-                <script src="assets/plugins/markdown/markdown.js"></script>
-                <script src="assets/plugins/markdown/to-markdown.js"></script>
-                <script src="assets/plugins/markdown/bootstrap-markdown.js"></script>
-                <script src="assets/plugins/slider/bootstrap-slider.js"></script>
-
-                <!-- EASY PIE CHART JS -->
-                <script src="assets/plugins/easypie-chart/easypiechart.min.js"></script>
-                <script src="assets/plugins/easypie-chart/jquery.easypiechart.min.js"></script>
-
-                <!-- KNOB JS -->
-                <!--[if IE]>
-                <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
-                <![endif]-->
-                <script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
-                <script src="assets/plugins/jquery-knob/knob.js"></script>
-
-                <!-- FLOT CHART JS -->
-                <script src="assets/plugins/flot-chart/jquery.flot.js"></script>
-                <script src="assets/plugins/flot-chart/jquery.flot.tooltip.js"></script>
-                <script src="assets/plugins/flot-chart/jquery.flot.resize.js"></script>
-                <script src="assets/plugins/flot-chart/jquery.flot.selection.js"></script>
-                <script src="assets/plugins/flot-chart/jquery.flot.stack.js"></script>
-                <script src="assets/plugins/flot-chart/jquery.flot.time.js"></script>
-
-                <!-- MORRIS JS -->
-                <script src="assets/plugins/morris-chart/raphael.min.js"></script>
-                <script src="assets/plugins/morris-chart/morris.min.js"></script>
-
-                <!-- C3 JS -->
-                <script src="assets/plugins/c3-chart/d3.v3.min.js" charset="utf-8"></script>
-                <script src="assets/plugins/c3-chart/c3.min.js"></script>
-
-                <!-- MAIN APPS JS -->
-                <script src="assets/js/apps.js"></script>
-            </ui:define>
         </ui:composition>
     </h:body>
 </html>

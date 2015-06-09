@@ -17,14 +17,14 @@ import ufg.inf.pw.DAO.FaccionistaDAO;
 import ufg.inf.pw.model.Faccionista;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author Lucas
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class FaccionistaBean extends AbstractBean implements Serializable {
 
     private Faccionista faccionista = new Faccionista();
@@ -89,20 +89,7 @@ public class FaccionistaBean extends AbstractBean implements Serializable {
 
     public String create() {
         try {
-           
-//            Date dt = new Date();
-//            faccionista.setCelular(" ");
-//            faccionista.setCep(" ");
-//            faccionista.setCidade("Goiânia");
-//            faccionista.setDataNascimento(dt);
-//            faccionista.setEmail(" ");
-//            faccionista.setEndereco(" ");
-//            faccionista.setTelefone(" ");
-//            faccionista.setNome("José João Pôsto");
-
-            System.out.println("entrou");
             getFaccionistaDAO().persist(faccionista);
-            System.out.println("persistiu");
             displayInfoMessageToUser("Faccionista cadastrada com sucesso!");
             loadFaccionistas();
             resetFaccionista();
@@ -135,6 +122,10 @@ public class FaccionistaBean extends AbstractBean implements Serializable {
             System.out.println(e);
         }
         return "faccionista-list";
+    }
+
+    public int getNextId() {
+        return getFaccionistaDAO().getNextId();
     }
 
     public void onRowEdit(RowEditEvent event) {

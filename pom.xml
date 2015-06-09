@@ -20,11 +20,6 @@
     
     <dependencies>
         
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.7</version>
-        </dependency>
         
         <!-- PERSISTENCE -->
         <dependency>
@@ -52,11 +47,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.31</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-dbcp</artifactId>
-            <version>${tomcat-dbcp.version}</version>
-        </dependency>
 
         <!-- VALIDATION -->
         <dependency>
@@ -72,12 +62,6 @@
             <version>${guava.version}</version>
         </dependency>
         
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>4.8.0</version>
-        </dependency>
-
         
 
         <!-- OTHERS -->
@@ -153,14 +137,8 @@
             <artifactId>all-themes</artifactId>  
             <version>1.0.10</version>  
         </dependency>
-        <!--dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.1</version>
-            <type>maven-plugin</type>
-        </dependency-->
         
-        <!-- SPRING + SPRING SECURITY -->
+        <!-- SPRING + SPRING SECURITY 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
@@ -191,6 +169,8 @@
             <artifactId>spring-security-config</artifactId>
             <version>3.2.0.RELEASE</version>
         </dependency>
+        
+        -->
 
 
         <dependency>

@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content"> 
+                <br/>
+
+                <!-- Begin breadcrumb -->
+                <ol class="breadcrumb default square rsaquo sm">
+                    <li><a href="index.xhtml">Início</a></li>
+                    <li class="active">Lista de modelos</li>
+                </ol>
+                <!-- End breadcrumb -->
+
+                <!-- BEGIN DATA TABLE -->
+                <div class="the-box">
+                    <div class="table-responsive">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <i class="fa fa-code-fork icon-sidebar"></i>
+                                LISTA DE MODELOS
+                                <br/>
+                            </div>
+                        </div>
+
+
+
+                        <h:form id="modelosForm">
+                            <p:growl id="messages" showDetail="false"/>
+                            <p:dataTable var="modelos"
+                                         value="#{modeloBean.modelos}"
+                                         editable="true"
+                                         widgetVar="modelosTable"
+                                         emptyMessage="Nenhum modelo encontrado"
+                                         paginator="true"
+                                         style="text-align: center;"
+                                         rows="50"
+                                         rowsPerPageTemplate="10, 25, 50, 100"
+                                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         filteredValue="#{modeloBean.filteredModelos}">
+
+                                <f:facet name="header">
+
+                                    <div class="row" >
+
+                                        <div class="col-lg-6"  align="left">
+                                            <p:commandButton id="novaModelo"
+                                                             value="Cadastrar novo modelo"
+                                                             styleClass="btn btn-rounded-lg"
+                                                             action="#{modeloBean.newModelo()}"/>
+                                        </div>                                    
+
+                                        <div class="col-lg-6"   align="right" >
+
+                                            <h:outputText value="Pesquisa: " />
+                                            <p:inputText id="globalFilter"
+                                                         onkeyup="PF('modelosTable').filter()"
+                                                         style="width:250px"
+                                                         placeholder="Digite sua busca aqui..."/>
+
+                                        </div>
+
+                                    </div>
+
+                                </f:facet>
+
+                                <p:ajax event="rowEdit" listener="#{modeloBean.onRowEdit}" update=":modelosForm:messages" />
+                                <p:ajax event="rowEditCancel" listener="#{modeloBean.onCancel}" update=":modelosForm:messages" />
+
+
+                                <!-- Coluna com os nomes das modelos -->
+                                <p:column headerText="CÓDIGO:"
+                                          style="width:20px"
+                                          rendered="true"
+                                          filterBy="#{modelos.idmodelo}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{modelos.idmodelo}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:inputText required="true"
+                                                         style="width:100%"
+                                                         value="#{modelos.idmodelo}"
+                                                         requiredMessage="Informe o nome da Modelo"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+
+                                <!-- Coluna com os nomes das modelos -->
+                                <p:column headerText="NOME:"
+                                          style="width:96px"
+                                          rendered="true"
+                                          filterBy="#{modelos.nome}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{modelos.nome}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:inputText required="true"
+                                                         style="width:100%"
+                                                         value="#{modelos.nome}"
+                                                         requiredMessage="Informe o nome da Modelo"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+
+                                <p:column headerText="DESCRIÇÃO:"
+                                          style="width:96px"
+                                          rendered="true"
+                                          filterBy="#{modelos.descricao}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{modelos.descricao}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:inputText required="true"
+                                                         style="width:100%"
+                                                         value="#{modelos.descricao}"
+                                                         requiredMessage="Informe a descricao do Modelo"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+
+
+                                <p:column headerText="FOTO:"
+                                          style="width:50px"
+                                          rendered="true"
+                                          filterBy="#{modelos.foto}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <img  src='data:image/jpeg;image/jpg;image/png;base64, ${modelos.foto}' width="50%" alt="" class="img-responsive" /> 
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:inputText required="true"
+                                                         style="width:100%"
+                                                         value="#{modelos.foto}"
+                                                         requiredMessage="Informe a descricao do Modelo"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+
+
+
+
+
+
+
+
+
+
+
+                                <p:column style="width:10px">
+                                    <f:facet name="header">
+                                        <span class="ui-icon ui-icon-search" title="Ver Detalhes"></span>
+                                    </f:facet>
+                                    <p:commandLink id="selectButton"
+                                                   update=":modelosForm"
+                                                   styleClass="ui-icon ui-icon-search"
+                                                   title="Ver Detalhes"
+                                                   action="modelo-details">
+                                        <f:setPropertyActionListener value="#{modelos}"
+                                                                     target="#{modeloBean.selectedModelo}" />
+                                    </p:commandLink>
+                                </p:column>
+
+                                <p:column style="width:10px">
+                                    <f:facet name="header" >
+                                        <span class="ui-icon ui-icon-pencil" title="Editar"></span>
+                                    </f:facet>
+                                    <p:rowEditor id="editor" />
+                                    <p:tooltip for="editor" value="Editar"/>
+                                </p:column>
+
+                                <!-- Coluna com o botao de exclusão da modelo (renderizada) -->
+                                <p:column style="width:10px" >
+                                    <f:facet name="header">
+                                        <span class="ui-icon ui-icon-trash" title="Excluir"></span>
+                                    </f:facet>
+                                    <p:commandLink id="deletButton"
+                                                   update=":modelosForm"
+                                                   action="#{modeloBean.remove()}"
+                                                   styleClass="ui-icon ui-icon-trash"
+                                                   title="Excluir">
+                                        <f:setPropertyActionListener value="#{modelos}"
+                                                                     target="#{modeloBean.selectedModelo}" />
+                                    </p:commandLink>
+                                </p:column>
+
+
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

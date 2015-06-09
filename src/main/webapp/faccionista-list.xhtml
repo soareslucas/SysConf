@@ -8,13 +8,12 @@
 
     <h:body>
         <ui:composition template="common/common-layout.xhtml">
-            <ui:define name="content">
-                <h1 class="page-heading"><i class="fa fa-code-fork icon-sidebar"></i> Lista de faccionistas</h1>
-                <!-- End page heading -->
+            <ui:define name="content"> 
+                <br/>
 
                 <!-- Begin breadcrumb -->
                 <ol class="breadcrumb default square rsaquo sm">
-                    <li><a href="index.xhtml"><i class="fa fa-home"></i></a></li>
+                    <li><a href="index.xhtml">Início</a></li>
                     <li class="active">Lista de faccionistas</li>
                 </ol>
                 <!-- End breadcrumb -->
@@ -29,9 +28,9 @@
                                 <br/>
                             </div>
                         </div>
-                        
-                        
-                        
+
+
+
                         <h:form id="faccionistasForm">
                             <p:growl id="messages" showDetail="false"/>
                             <p:dataTable var="faccionistas"
@@ -47,25 +46,38 @@
                                          filteredValue="#{faccionistaBean.filteredFaccionistas}">
 
                                 <f:facet name="header">
-                                    <div align="right">
-                                        <p:outputPanel>
-                                            <h:outputText value="Pesquisa: " />
-                                            <p:inputText id="globalFilter"
-                                                         onkeyup="PF('faccionistasTable').filter()"
-                                                         style="width:250px"
-                                                         placeholder="Digite sua busca aqui..."/>
-                                        </p:outputPanel>
+
+                                    <div class="row" >
+                                        
+                                        <div class="col-lg-6"  align="left">
+                                            <p:commandButton id="novaFaccionista"
+                                                             value="Cadastrar nova faccionista"
+                                                             styleClass="btn btn-rounded-lg"
+                                                             action="#{faccionistaBean.newFaccionista()}"/>
+                                        </div>                                    
+
+                                        <div class="col-lg-6"   align="right" >
+                                        
+                                                <h:outputText value="Pesquisa: " />
+                                                <p:inputText id="globalFilter"
+                                                             onkeyup="PF('faccionistasTable').filter()"
+                                                             style="width:250px"
+                                                             placeholder="Digite sua busca aqui..."/>
+                                 
+                                        </div>
+
                                     </div>
+
                                 </f:facet>
 
                                 <p:ajax event="rowEdit" listener="#{faccionistaBean.onRowEdit}" update=":faccionistasForm:messages" />
                                 <p:ajax event="rowEditCancel" listener="#{faccionistaBean.onCancel}" update=":faccionistasForm:messages" />
 
-                               
+
 
                                 <!-- Coluna com os nomes das faccionistas -->
                                 <p:column headerText="NOME:"
-                                          style="width:100px"
+                                          style="width:96px"
                                           rendered="true"
                                           filterBy="#{faccionistas.nome}"
                                           filterMatchMode="contains"
@@ -83,7 +95,6 @@
                                     </p:cellEditor>
                                 </p:column>
 
-                                <!-- Coluna com os emails das faccionistas  -->
                                 <p:column headerText="E-MAIL:"
                                           style="width:90px"
                                           rendered="true"
@@ -98,14 +109,14 @@
                                             <p:inputText required="true"
                                                          style="width:100%"
                                                          value="#{faccionistas.email}"
-                                                         requiredMessage="Informe o e-mail para essa faccionista"/>
+                                                         requiredMessage="Informe a email da Faccionista"/>
                                         </f:facet>
                                     </p:cellEditor>
                                 </p:column>
 
                                 <!-- Coluna com os endereços -->
                                 <p:column headerText="ENDEREÇO"
-                                          style="width:90px"
+                                          style="width:70px"
                                           rendered="true"
                                           filterBy="#{faccionistas.endereco}"
                                           filterMatchMode="contains"
@@ -123,9 +134,49 @@
                                     </p:cellEditor>
                                 </p:column>
 
+                                <p:column headerText="CIDADE:"
+                                          style="width:50px"
+                                          rendered="true"
+                                          filterBy="#{faccionistas.cidade}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{faccionistas.cidade}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:inputText required="true"
+                                                         style="width:100%"
+                                                         value="#{faccionistas.cidade}"
+                                                         requiredMessage="Informe a cidade da Faccionista"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="CEP:"
+                                          style="width:50px"
+                                          rendered="true"
+                                          filterBy="#{faccionistas.cep}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{faccionistas.cep}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:inputText required="true"
+                                                         style="width:100%"
+                                                         value="#{faccionistas.cep}"
+                                                         requiredMessage="Informe a cep da Faccionista"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+
+
                                 <!-- Coluna com as diarias -->
                                 <p:column headerText="TELEFONE"
-                                          style="width:80px"
+                                          style="width:70px"
                                           rendered="true"
                                           filterBy="#{faccionistas.telefone}"
                                           filterMatchMode="contains"
@@ -143,12 +194,34 @@
                                     </p:cellEditor>
                                 </p:column>
 
+
+                                <p:column headerText="CELULAR:"
+                                          style="width:70px"
+                                          rendered="true"
+                                          filterBy="#{faccionistas.celular}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{faccionistas.celular}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:inputText required="true"
+                                                         style="width:100%"
+                                                         value="#{faccionistas.celular}"
+                                                         requiredMessage="Informe o celular"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+
+
                                 <!-- Coluna com os almoços -->
-                              <p:column id="dataNascimento"
+                                <p:column id="dataNascimento"
                                           headerText="DATA NASCIMENTO"
                                           rendered="true"
                                           filterBy="#{faccionistas.dataNascimento}"
-                                          style="width: 100px"
+                                          style="width:55px"
                                           filterMatchMode="contains"
                                           filterStyle="display:none">
                                     <p:cellEditor>
@@ -175,7 +248,7 @@
                                     </p:cellEditor>
                                 </p:column>
 
-                                <p:column style="width:37px">
+                                <p:column style="width:10px">
                                     <f:facet name="header">
                                         <span class="ui-icon ui-icon-search" title="Ver Detalhes"></span>
                                     </f:facet>
@@ -189,8 +262,8 @@
                                     </p:commandLink>
                                 </p:column>
 
-                                <p:column style="width:37px">
-                                    <f:facet name="header">
+                                <p:column style="width:10px">
+                                    <f:facet name="header" >
                                         <span class="ui-icon ui-icon-pencil" title="Editar"></span>
                                     </f:facet>
                                     <p:rowEditor id="editor" />
@@ -198,7 +271,7 @@
                                 </p:column>
 
                                 <!-- Coluna com o botao de exclusão da faccionista (renderizada) -->
-                                <p:column style="width:37px">
+                                <p:column style="width:10px" >
                                     <f:facet name="header">
                                         <span class="ui-icon ui-icon-trash" title="Excluir"></span>
                                     </f:facet>
@@ -212,14 +285,7 @@
                                     </p:commandLink>
                                 </p:column>
 
-                                <f:facet name="footer">
-                                    <div align="left" style="padding: 15px 25px;">
-                                        <p:commandButton id="novaFaccionista"
-                                                         value="Cadastrar nova faccionista"
-                                                         styleClass="btn btn-rounded-lg"
-                                                         action="#{faccionistaBean.newFaccionista()}"/>
-                                    </div>
-                                </f:facet>
+
                             </p:dataTable>
                         </h:form>
                     </div>
