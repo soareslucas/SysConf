@@ -1,26 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 4, 2015 12:12:44 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jun 9, 2015 1:36:27 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ufg.inf.pw.model.Corte" table="corte" catalog="confeccao" optimistic-lock="version">
         <id name="idcorte" type="java.lang.Integer">
             <column name="idcorte" />
             <generator class="identity" />
         </id>
+        <many-to-one name="modelo" class="ufg.inf.pw.model.Modelo" fetch="select">
+            <column name="modelo_idmodelo" />
+        </many-to-one>
         <property name="nome" type="string">
             <column name="nome" length="45" />
         </property>
         <property name="foto" type="string">
             <column name="foto" length="65535" />
         </property>
-        <set name="modelos" table="modelo_has_corte" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="corte_idcorte" not-null="true" />
-            </key>
-            <many-to-many entity-name="ufg.inf.pw.model.Modelo">
-                <column name="modelo_idmodelo" not-null="true" />
-            </many-to-many>
-        </set>
     </class>
 </hibernate-mapping>

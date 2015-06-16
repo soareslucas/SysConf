@@ -5,28 +5,20 @@
  */
 package ufg.inf.pw.beans;
 
-import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
+import java.sql.SQLException;
+
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import org.primefaces.event.RowEditEvent;
-import org.primefaces.event.SelectEvent;
 import ufg.inf.pw.DAO.ModeloDAO;
 import ufg.inf.pw.model.Modelo;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.imageio.ImageIO;
-import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
-import sun.misc.BASE64Encoder;
+import ufg.inf.pw.utils.FotoUpload;
 
 /**
  *
@@ -98,7 +90,11 @@ public class ModeloBean extends AbstractBean implements Serializable {
     }
 
     private void loadModelos() {
-        modelos = getModeloDAO().findAll();
+        try {
+            modelos = getModeloDAO().findAllJDBC();
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void resetModelo() {
@@ -147,53 +143,21 @@ public class ModeloBean extends AbstractBean implements Serializable {
         return getModeloDAO().getNextId();
     }
 
-    public void onRowEdit(RowEditEvent event) {
-        System.out.println("entrou");
-        Modelo modeloAlterado = (Modelo) event.getObject();
-        getModeloDAO().merge(modeloAlterado);
+    public String update() {
+
+        getModeloDAO().merge(selectedModelo);
         displayInfoMessageToUser("Modelo atualizado com sucesso!");
+        return "modelo-list";
     }
 
-    public void onCancel(RowEditEvent event) {
-        displayInfoMessageToUser("Atualização cancelada com sucesso!");
+    public void setFotoModelo() throws Exception {
+        this.modelo.setFoto(FotoUpload.FileUploadToImg64(fotoUploaded));
+        System.out.println(this.modelo.getFoto());
     }
 
-    public void onDateSelect(SelectEvent event) {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+    public void setFotoModeloEdit() throws Exception {
+        this.selectedModelo.setFoto(FotoUpload.FileUploadToImg64(fotoUploaded));
+        System.out.println(this.modelo.getFoto());
+
     }
-
-    public void setFotoModelo() throws IOException {
-        System.out.println("entrou");
-        if (fotoUploaded != null) {
-            System.out.println("passou");
-            FacesMessage message = new FacesMessage("Sucesso", "A foto " + fotoUploaded.getFileName() + " foi carregada.");
-            FacesContext.getCurrentInstance().addMessage(null, message);
-
-            InputStream image = fotoUploaded.getInputstream();
-            BufferedImage img = ImageIO.read(image);
-
-            String imageString = null;
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-            try {
-                ImageIO.write(img, "jpg", bos);
-                byte[] imageBytes = bos.toByteArray();
-
-                BASE64Encoder encoder = new BASE64Encoder();
-                imageString = encoder.encode(imageBytes);
-
-                bos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            this.modelo.setFoto(imageString);
-
-            System.out.println(this.modelo.getFoto());
-
-        }
-    }
-
 }

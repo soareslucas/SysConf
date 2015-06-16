@@ -33,9 +33,9 @@
 
                         <h:form id="modelosForm">
                             <p:growl id="messages" showDetail="false"/>
+
                             <p:dataTable var="modelos"
                                          value="#{modeloBean.modelos}"
-                                         editable="true"
                                          widgetVar="modelosTable"
                                          emptyMessage="Nenhum modelo encontrado"
                                          paginator="true"
@@ -43,12 +43,10 @@
                                          rows="50"
                                          rowsPerPageTemplate="10, 25, 50, 100"
                                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         filteredValue="#{modeloBean.filteredModelos}">
+                                         filteredValue="#{modeloBean.filteredModelos}" >
 
                                 <f:facet name="header">
-
                                     <div class="row" >
-
                                         <div class="col-lg-6"  align="left">
                                             <p:commandButton id="novaModelo"
                                                              value="Cadastrar novo modelo"
@@ -57,7 +55,6 @@
                                         </div>                                    
 
                                         <div class="col-lg-6"   align="right" >
-
                                             <h:outputText value="Pesquisa: " />
                                             <p:inputText id="globalFilter"
                                                          onkeyup="PF('modelosTable').filter()"
@@ -65,56 +62,26 @@
                                                          placeholder="Digite sua busca aqui..."/>
 
                                         </div>
-
                                     </div>
-
                                 </f:facet>
 
-                                <p:ajax event="rowEdit" listener="#{modeloBean.onRowEdit}" update=":modelosForm:messages" />
-                                <p:ajax event="rowEditCancel" listener="#{modeloBean.onCancel}" update=":modelosForm:messages" />
-
-
-                                <!-- Coluna com os nomes das modelos -->
                                 <p:column headerText="CÓDIGO:"
                                           style="width:20px"
                                           rendered="true"
                                           filterBy="#{modelos.idmodelo}"
                                           filterMatchMode="contains"
                                           filterStyle="display:none">
-                                    <p:cellEditor>
-                                        <f:facet name="output">
-                                            <h:outputText value="#{modelos.idmodelo}"/>
-                                        </f:facet>
-                                        <f:facet name="input">
-                                            <p:inputText required="true"
-                                                         style="width:100%"
-                                                         value="#{modelos.idmodelo}"
-                                                         requiredMessage="Informe o nome da Modelo"/>
-                                        </f:facet>
-                                    </p:cellEditor>
+                                    <h:outputText value="#{modelos.idmodelo}" />
                                 </p:column>
 
-
-                                <!-- Coluna com os nomes das modelos -->
                                 <p:column headerText="NOME:"
-                                          style="width:96px"
+                                          style="width:45px"
                                           rendered="true"
                                           filterBy="#{modelos.nome}"
                                           filterMatchMode="contains"
                                           filterStyle="display:none">
-                                    <p:cellEditor>
-                                        <f:facet name="output">
-                                            <h:outputText value="#{modelos.nome}"/>
-                                        </f:facet>
-                                        <f:facet name="input">
-                                            <p:inputText required="true"
-                                                         style="width:100%"
-                                                         value="#{modelos.nome}"
-                                                         requiredMessage="Informe o nome da Modelo"/>
-                                        </f:facet>
-                                    </p:cellEditor>
+                                    <h:outputText value="#{modelos.nome}" />
                                 </p:column>
-
 
                                 <p:column headerText="DESCRIÇÃO:"
                                           style="width:96px"
@@ -122,49 +89,19 @@
                                           filterBy="#{modelos.descricao}"
                                           filterMatchMode="contains"
                                           filterStyle="display:none">
-                                    <p:cellEditor>
-                                        <f:facet name="output">
-                                            <h:outputText value="#{modelos.descricao}"/>
-                                        </f:facet>
-                                        <f:facet name="input">
-                                            <p:inputText required="true"
-                                                         style="width:100%"
-                                                         value="#{modelos.descricao}"
-                                                         requiredMessage="Informe a descricao do Modelo"/>
-                                        </f:facet>
-                                    </p:cellEditor>
+                                    <h:outputText value="#{modelos.descricao}" />
                                 </p:column>
 
-
-
                                 <p:column headerText="FOTO:"
-                                          style="width:50px"
+                                          style="width:30px; text-align: center"
                                           rendered="true"
                                           filterBy="#{modelos.foto}"
                                           filterMatchMode="contains"
-                                          filterStyle="display:none">
-                                    <p:cellEditor>
-                                        <f:facet name="output">
-                                            <img  src='data:image/jpeg;image/jpg;image/png;base64, ${modelos.foto}' width="50%" alt="" class="img-responsive" /> 
-                                        </f:facet>
-                                        <f:facet name="input">
-                                            <p:inputText required="true"
-                                                         style="width:100%"
-                                                         value="#{modelos.foto}"
-                                                         requiredMessage="Informe a descricao do Modelo"/>
-                                        </f:facet>
-                                    </p:cellEditor>
+                                          filterStyle="display:none"
+                                          >
+
+                                    <img align="center" src='data:image/jpeg;image/jpg;image/png;base64, #{modelos.foto}' width="100%" alt="" class="img-responsive" /> 
                                 </p:column>
-
-
-
-
-
-
-
-
-
-
 
 
                                 <p:column style="width:10px">
@@ -182,12 +119,20 @@
                                 </p:column>
 
                                 <p:column style="width:10px">
-                                    <f:facet name="header" >
+                                    <f:facet name="header">
                                         <span class="ui-icon ui-icon-pencil" title="Editar"></span>
                                     </f:facet>
-                                    <p:rowEditor id="editor" />
-                                    <p:tooltip for="editor" value="Editar"/>
+                                    <p:commandLink id="editButton"
+                                                   update=":modelosForm"
+                                                   styleClass="ui-icon ui-icon-pencil"
+                                                   title="Editar"
+                                                   action="modelo-edit">
+                                        <f:setPropertyActionListener value="#{modelos}"
+                                                                     target="#{modeloBean.selectedModelo}" />
+                                    </p:commandLink>
                                 </p:column>
+
+
 
                                 <!-- Coluna com o botao de exclusão da modelo (renderizada) -->
                                 <p:column style="width:10px" >

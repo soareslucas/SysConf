@@ -1,16 +1,68 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content">
+                <h1 class="page-heading"><i class="fa fa-car icon-sidebar"></i>  Detalhes do corte</h1>
+                <!-- End page heading -->
+
+                <!-- Begin breadcrumb -->   
+                <ol class="breadcrumb default square rsaquo sm">
+                    <li><a href="index.xhtml">Início</a></li>
+                    <li><a href="corte-list.xhtml">Lista dos Cortes</a></li>
+                    <li class="active">Detalhes do corte</li>
+                </ol>
+                <!-- End breadcrumb -->
+
+                <div class="the-box">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <i class="fa fa-car icon-sidebar"></i>
+                            DETALHES DA CORTE
+                            <br/>
+                        </div>
+                    </div>
+
+                    <h:panelGrid columns="2">
+
+
+                        <h:panelGrid columns="1">
+                            <div class="breadcrumb default square rsaquo sm">
+
+                                <img  src='data:image/jpeg;image/jpg;image/png;base64, ${corteBean.selectedCorte.foto}' width="100%" alt="" class="img-responsive" /> 
+
+                            </div>
+                        </h:panelGrid>
+
+
+                        <h:panelGrid columns="1">
+
+                            <h:panelGrid columns="1">
+                                <h:outputText value="REFERÊNCIA:" style="font-weight:bold;padding-left:20px;"/>
+                                <h:outputText value="#{corteBean.selectedCorte.idcorte}" style="padding-left:20px;"/>
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="1">
+                                <h:outputText value="NOME:" style="font-weight:bold;padding-left:20px;"/>
+                                <h:outputText value="#{corteBean.selectedCorte.nome}" style="padding-left:20px;"/>                                
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="1">
+                                <h:outputText value="MODELO:" style="font-weight:bold;padding-left:20px;"/>
+                                <h:outputText value="#{corteBean.selectedCorte.modelo.nome}" style="padding-left:20px;"/>                                
+                            </h:panelGrid>
+
+                        </h:panelGrid>
+                    </h:panelGrid>
+                    <br/>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
+

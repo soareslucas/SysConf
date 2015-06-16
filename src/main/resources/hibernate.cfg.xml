@@ -7,12 +7,15 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/confeccao</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">12345</property>
-    <mapping resource="ufg/inf/pw/model/Modelo.hbm.xml"/>
+    <property name="hibernate.cache.use_query_cache">false</property>
+    <property name="hibernate.cache.use_second_level_cache">false</property>
+    <property name="hibernate.cache.query_cache_factory">false</property>
     <mapping resource="ufg/inf/pw/model/Peca.hbm.xml"/>
-    <mapping resource="ufg/inf/pw/model/Faccao.hbm.xml"/>
     <mapping resource="ufg/inf/pw/model/Corte.hbm.xml"/>
-    <mapping resource="ufg/inf/pw/model/Faccionista.hbm.xml"/>
     <mapping resource="ufg/inf/pw/model/Suprimento.hbm.xml"/>
     <mapping resource="ufg/inf/pw/model/Aviamento.hbm.xml"/>
+    <mapping resource="ufg/inf/pw/model/Modelo.hbm.xml"/>
+    <mapping resource="ufg/inf/pw/model/Faccionista.hbm.xml"/>
+    <mapping resource="ufg/inf/pw/model/Faccao.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

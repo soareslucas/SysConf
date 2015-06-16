@@ -1,16 +1,183 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content"> 
+                <br/>
+
+                <!-- Begin breadcrumb -->
+                <ol class="breadcrumb default square rsaquo sm">
+                    <li><a href="index.xhtml">Início</a></li>
+                    <li class="active">Lista de cortes</li>
+                </ol>
+                <!-- End breadcrumb -->
+
+                <!-- BEGIN DATA TABLE -->
+                <div class="the-box">
+                    <div class="table-responsive">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <i class="fa fa-code-fork icon-sidebar"></i>
+                                LISTA DE CORTES
+                                <br/>
+                            </div>
+                        </div>
+
+
+
+                        <h:form id="cortesForm">
+                            <p:growl id="messages" showDetail="false"/>
+                            <p:dataTable var="cortes"
+                                         value="#{corteBean.cortes}"
+                                         editable="true"
+                                         widgetVar="cortesTable"
+                                         emptyMessage="Nenhum corte encontrado"
+                                         paginator="true"
+                                         style="text-align: center;"
+                                         rows="50"
+                                         rowsPerPageTemplate="10, 25, 50, 100"
+                                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         filteredValue="#{corteBean.filteredCortes}">
+
+                                <f:facet name="header">
+
+                                    <div class="row" >
+
+                                        <div class="col-lg-6"  align="left">
+                                            <p:commandButton id="novaCorte"
+                                                             value="Cadastrar novo corte"
+                                                             styleClass="btn btn-rounded-lg"
+                                                             action="#{corteBean.newCorte()}"/>
+                                        </div>                                    
+
+                                        <div class="col-lg-6"   align="right" >
+
+                                            <h:outputText value="Pesquisa: " />
+                                            <p:inputText id="globalFilter"
+                                                         onkeyup="PF('cortesTable').filter()"
+                                                         style="width:250px"
+                                                         placeholder="Digite sua busca aqui..."/>
+
+                                        </div>
+
+                                    </div>
+
+                                </f:facet>
+
+                           
+
+                                <!-- Coluna com os nomes das cortes -->
+                                <p:column headerText="CÓDIGO:"
+                                          style="width:20px"
+                                          rendered="true"
+                                          filterBy="#{cortes.idcorte}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                            <h:outputText value="#{cortes.idcorte}"/>
+                                </p:column>
+
+
+                                <!-- Coluna com os nomes das cortes -->
+                                <p:column headerText="NOME:"
+                                          style="width:96px"
+                                          rendered="true"
+                                          filterBy="#{cortes.nome}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                            <h:outputText value="#{cortes.nome}"/>
+
+                                </p:column>
+
+
+
+                                <p:column headerText="FOTO:"
+                                          style="width:40px"
+                                          rendered="true"
+                                          filterBy="#{cortes.foto}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+
+
+                                    <img  src='data:image/jpeg;image/jpg;image/png;base64, ${cortes.foto}' width="50%" alt=""  /> 
+
+                                </p:column>
+
+
+                                <p:column headerText="MODELO:"
+                                          style="width:50px"
+                                          rendered="true"
+                                          filterBy="#{cortes.modelo.nome}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                    
+                                            <h:outputText value="#{cortes.modelo.nome}"/>
+                
+                                </p:column>
+
+
+
+
+
+
+
+
+
+                                <p:column style="width:10px">
+                                    <f:facet name="header">
+                                        <span class="ui-icon ui-icon-search" title="Ver Detalhes"></span>
+                                    </f:facet>
+                                    <p:commandLink id="selectButton"
+                                                   update=":cortesForm"
+                                                   styleClass="ui-icon ui-icon-search"
+                                                   title="Ver Detalhes"
+                                                   action="corte-details">
+                                        <f:setPropertyActionListener value="#{cortes}"
+                                                                     target="#{corteBean.selectedCorte}" />
+                                    </p:commandLink>
+                                </p:column>
+
+                                <p:column style="width:10px">
+                                    <f:facet name="header">
+                                        <span class="ui-icon ui-icon-pencil" title="Editar"></span>
+                                    </f:facet>
+                                    <p:commandLink id="editButton"
+                                                   update=":cortesForm"
+                                                   styleClass="ui-icon ui-icon-pencil"
+                                                   title="Editar"
+                                                   action="corte-edit">
+                                        <f:setPropertyActionListener value="#{cortes}"
+                                                                     target="#{corteBean.selectedCorte}" />
+                                    </p:commandLink>
+                                </p:column>
+
+                                <!-- Coluna com o botao de exclusão da corte (renderizada) -->
+                                <p:column style="width:10px" >
+                                    <f:facet name="header">
+                                        <span class="ui-icon ui-icon-trash" title="Excluir"></span>
+                                    </f:facet>
+                                    <p:commandLink id="deletButton"
+                                                   update=":cortesForm"
+                                                   action="#{corteBean.remove()}"
+                                                   styleClass="ui-icon ui-icon-trash"
+                                                   title="Excluir">
+                                        <f:setPropertyActionListener value="#{cortes}"
+                                                                     target="#{corteBean.selectedCorte}" />
+                                    </p:commandLink>
+                                </p:column>
+
+
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
+
