@@ -35,12 +35,14 @@
                                     <h:outputLabel for="modelo"
                                                    value="SELECIONE UM MODELO:"
                                                    style="font-weight: bold"/><br/>
-                                    <h:selectOneMenu  id="modelo"
-                                                      required="true"
-                                                      styleClass="form-control"
-                                                      value="#{corteBean.corte.modelo.idmodelo}"
-                                                      requiredMessage="Selecione a modelo composto pelo novo corte"
-                                                      label="modelo">
+                                    <h:selectOneMenu    
+                                        style="width: 70%" 
+                                        id="modelo"
+                                        required="true"
+                                        styleClass="form-control"
+                                        value="#{corteBean.corte.modelo.idmodelo}"
+                                        requiredMessage="Selecione a modelo composto pelo novo corte"
+                                        label="modelo">
                                         <f:selectItem itemLabel="Selecione" itemValue="" />
                                         <a href="corte-new.xhtml"></a>
                                         <f:selectItems value="#{corteBean.modelos}"

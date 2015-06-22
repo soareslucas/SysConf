@@ -182,10 +182,10 @@ public class CorteBean extends AbstractBean implements Serializable {
         return getCorteDAO().getNextId();
     }
 
-    public void update() {
-        System.out.println("entrou");
+    public String update() {
         getCorteDAO().merge(selectedCorte);
         displayInfoMessageToUser("Corte atualizado com sucesso!");
+        return "corte-list";
     }
 
     public void onCancel(RowEditEvent event) {
@@ -203,6 +203,15 @@ public class CorteBean extends AbstractBean implements Serializable {
         this.corte.setFoto(FotoUpload.FileUploadToImg64(fotoUploaded));
         System.out.println(this.corte.getFoto());
         displayInfoMessageToUser("A foto " + fotoUploaded.getFileName() + " foi carregada.");
+
+    }
+
+    public void setFotoCorteEdit() throws Exception {
+
+        String foto = FotoUpload.FileUploadToImg64(fotoUploaded);
+        
+        this.corte.setFoto(foto);
+        this.selectedCorte.setFoto(foto);
 
     }
 

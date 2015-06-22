@@ -1,16 +1,132 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content">
+                <h1 class="page-heading"><i class="fa fa-users icon-sidebar"></i> Cadastro de Aviamento</h1>
+                <!-- End page heading -->
+
+                <!-- Begin breadcrumb -->
+                <ol class="breadcrumb default square rsaquo sm">
+                    <li><a href="index.xhtml"><i class="fa fa-home"></i></a></li>
+                    <li><a href="aviamento-list.xhtml">Lista de Aviamento</a></li>
+                    <li class="active">Cadastro de Aviamento</li>
+                </ol>
+                <!-- End breadcrumb -->
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <i class="fa fa-users icon-sidebar"></i>
+                        CADASTRO DE AVIAMENTO
+                        <br/>
+                    </div>
+                    <h:form id="novaAviamentoForm"  enctype="multipart/form-data" >
+                        <p:growl id="messages" showDetail="true" />
+
+                        <div class="the-box" style="padding: 5px;" >
+
+                            <h:panelGrid columns="1" width="50%">      
+                                <div class="form-group">
+                                    <h:outputLabel for="modelo"
+                                                   value="SELECIONE UM MODELO:"
+                                                   style="font-weight: bold"/><br/>
+                                    <h:selectOneMenu    
+                                        style="width: 70%" 
+                                        id="modelo"
+                                        required="true"
+                                        styleClass="form-control"
+                                        value="#{aviamentoBean.aviamento.modelo.idmodelo}"
+                                        requiredMessage="Selecione a modelo composto pelo novo aviamento"
+                                        label="modelo">
+                                        <f:selectItem itemLabel="Selecione" itemValue="" />
+                                        <a href="aviamento-new.xhtml"></a>
+                                        <f:selectItems value="#{aviamentoBean.modelos}"
+                                                       var="modelo"
+                                                       itemLabel="Código:(#{modelo.idmodelo}) | Nome: #{modelo.nome}"
+                                                       itemValue="#{modelo.idmodelo}"/>
+                                    </h:selectOneMenu>
+                                    <p:message for="modelo" />
+
+
+
+
+
+
+
+                                </div>
+                            </h:panelGrid>  
+
+                            <h:panelGrid columns="1" width="50%">
+                                <div class="form-group">
+                                    <h:outputLabel for="nome"
+                                                   value="NOME:"
+                                                   style="font-weight: bold"/>
+                                    <p:inputText id="nome"
+                                                 style="width: 70%"
+                                                 value="#{aviamentoBean.aviamento.nome}"
+
+                                                 label="nome"/>
+                                    <p:message for="nome" />
+                                </div>
+                            </h:panelGrid>
+
+
+                            <h:panelGrid columns="1" width="50%">
+                                <div class="form-group">
+                                    <h:outputLabel 
+                                        value="FOTO:"
+                                        style="font-weight: bold"/> 
+                                    <h:outputLabel 
+                                        value="Carregar foto primeiro antes de cadastrar o aviamento."
+                                        style="font-weight: normal"/> 
+
+
+                                    <p:fileUpload value="#{aviamentoBean.fotoUploaded}" mode="simple" />
+                                    <br/>
+                                    <p:commandButton   styleClass="btn btn-primary" value="Carregar Foto" ajax="false" actionListener="#{aviamentoBean.setFotoAviamento()}" disabled="false" />
+                                    <br/>
+                                    <img  src='data:image/jpeg;image/jpg;image/png;base64, ${aviamentoBean.aviamento.foto}'  alt="" class="img-responsive" />
+
+                                    <h:outputLabel 
+                                        value="Obs.: Só são permitidas fotos no formato JPG ou JPEG!"
+                                        style="font-style: italic; font-weight: normal"/> 
+
+                                </div>
+                            </h:panelGrid>
+
+
+
+
+
+
+
+
+
+
+
+                            <br/>
+
+                            <p:commandButton id="cadastrar"
+                                             value="Cadastrar"
+                                             action="#{aviamentoBean.create()}"
+                                             styleClass="btn btn-primary btn-rounded-lg"
+                                             ajax="false"/>&nbsp;
+                            <p:commandButton id="resetar"
+                                             value="Limpar"
+                                             type="reset"
+                                             styleClass="btn btn-danger btn-rounded-lg"
+                                             ajax="false"/>
+                        </div>
+                    </h:form>
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
 </html>

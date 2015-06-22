@@ -20,7 +20,7 @@ import sun.misc.BASE64Encoder;
  */
 public class FotoUpload {
 
-    public static String FileUploadToImg64(UploadedFile fotoUploaded) throws Exception{
+    public static String FileUploadToImg64(UploadedFile fotoUploaded) throws Exception {
 
         String imageString = null;
 
@@ -39,6 +39,9 @@ public class FotoUpload {
                 imageString = encoder.encode(imageBytes);
 
                 bos.close();
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+                        FacesMessage.SEVERITY_INFO, "A foto " + fotoUploaded.getFileName() + " foi carregada.", null));
+                FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
             } catch (Exception e) {
 
