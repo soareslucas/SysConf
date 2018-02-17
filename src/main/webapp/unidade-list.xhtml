@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content"> 
+                <br/>
+
+                <!-- Begin breadcrumb -->
+                <ol class="breadcrumb default square rsaquo sm">
+                    <li><a href="index.xhtml">Início</a></li>
+                    <li class="active">Lista de unidades</li>
+                </ol>
+                <!-- End breadcrumb -->
+
+                <!-- BEGIN DATA TABLE -->
+                <div class="the-box">
+                    <div class="table-responsive">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <i class="fa fa-code-fork icon-sidebar"></i>
+                                LISTA DE UNIDADES
+                                <br/>
+                            </div>
+                        </div>
+
+
+
+                        <h:form id="unidadesForm">
+                            <p:growl id="messages" showDetail="false"/>
+                            <p:dataTable var="unidades"
+                                         value="#{unidadeBean.unidades}"
+                                         editable="true"
+                                         widgetVar="unidadesTable"
+                                         emptyMessage="Nenhum unidade encontrado"
+                                         paginator="true"
+                                         style="text-align: center;"
+                                         rows="50"
+                                         rowsPerPageTemplate="10, 25, 50, 100"
+                                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         filteredValue="#{unidadeBean.filteredUnidades}">
+
+                                <f:facet name="header">
+
+                                    <div class="row" >
+
+                                        <div class="col-lg-6"  align="left">
+                                            <p:commandButton id="novaUnidade"
+                                                             value="Cadastrar novo unidade"
+                                                             styleClass="btn btn-rounded-lg"
+                                                             action="#{unidadeBean.newUnidade()}"/>
+                                        </div>                                    
+
+                                        <div class="col-lg-6"   align="right" >
+
+                                            <h:outputText value="Pesquisa: " />
+                                            <p:inputText id="globalFilter"
+                                                         onkeyup="PF('unidadesTable').filter()"
+                                                         style="width:250px"
+                                                         placeholder="Digite sua busca aqui..."/>
+
+                                        </div>
+
+                                    </div>
+
+                                </f:facet>
+
+                           
+
+                                <!-- Coluna com os nomes das unidades -->
+                                <p:column headerText="CÓDIGO:"
+                                          style="width:20px"
+                                          rendered="true"
+                                          filterBy="#{unidades.idunidade}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                            <h:outputText value="#{unidades.idunidade}"/>
+                                </p:column>
+
+
+                                <!-- Coluna com os nomes das unidades -->
+                                <p:column headerText="NOME:"
+                                          style="width:96px"
+                                          rendered="true"
+                                          filterBy="#{unidades.nome}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                            <h:outputText value="#{unidades.nome}"/>
+
+                                </p:column>
+
+
+
+                                <p:column headerText="FOTO:"
+                                          style="width:40px"
+                                          rendered="true"
+                                          filterBy="#{unidades.foto}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+
+
+                                    <img  src='data:image/jpeg;image/jpg;image/png;base64, ${unidades.foto}' width="50%" alt=""  /> 
+
+                                </p:column>
+
+
+                                <p:column headerText="MODELO:"
+                                          style="width:50px"
+                                          rendered="true"
+                                          filterBy="#{unidades.modelo.nome}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                    
+                                            <h:outputText value="#{unidades.modelo.nome}"/>
+                
+                                </p:column>
+
+
+
+
+
+
+
+
+
+                                <p:column style="width:10px">
+                                    <f:facet name="header">
+                                        <span class="ui-icon ui-icon-search" title="Ver Detalhes"></span>
+                                    </f:facet>
+                                    <p:commandLink id="selectButton"
+                                                   update=":unidadesForm"
+                                                   styleClass="ui-icon ui-icon-search"
+                                                   title="Ver Detalhes"
+                                                   action="unidade-details">
+                                        <f:setPropertyActionListener value="#{unidades}"
+                                                                     target="#{unidadeBean.selectedUnidade}" />
+                                    </p:commandLink>
+                                </p:column>
+
+                                <p:column style="width:10px">
+                                    <f:facet name="header">
+                                        <span class="ui-icon ui-icon-pencil" title="Editar"></span>
+                                    </f:facet>
+                                    <p:commandLink id="editButton"
+                                                   update=":unidadesForm"
+                                                   styleClass="ui-icon ui-icon-pencil"
+                                                   title="Editar"
+                                                   action="unidade-edit">
+                                        <f:setPropertyActionListener value="#{unidades}"
+                                                                     target="#{unidadeBean.selectedUnidade}" />
+                                    </p:commandLink>
+                                </p:column>
+
+                                <!-- Coluna com o botao de exclusão da unidade (renderizada) -->
+                                <p:column style="width:10px" >
+                                    <f:facet name="header">
+                                        <span class="ui-icon ui-icon-trash" title="Excluir"></span>
+                                    </f:facet>
+                                    <p:commandLink id="deletButton"
+                                                   update=":unidadesForm"
+                                                   action="#{unidadeBean.remove()}"
+                                                   styleClass="ui-icon ui-icon-trash"
+                                                   title="Excluir">
+                                        <f:setPropertyActionListener value="#{unidades}"
+                                                                     target="#{unidadeBean.selectedUnidade}" />
+                                    </p:commandLink>
+                                </p:column>
+
+
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

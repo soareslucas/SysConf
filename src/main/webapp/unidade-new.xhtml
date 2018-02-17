@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content">
+                <h1 class="page-heading"><i class="fa fa-users icon-sidebar"></i> Cadastro de Unidade</h1>
+                <!-- End page heading -->
+
+                <!-- Begin breadcrumb -->
+                <ol class="breadcrumb default square rsaquo sm">
+                    <li><a href="index.xhtml"><i class="fa fa-home"></i></a></li>
+                    <li><a href="unidade-list.xhtml">Nova Unidade</a></li>
+                    <li class="active">Cadastro de Unidade</li>
+                </ol>
+                <!-- End breadcrumb -->
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <i class="fa fa-users icon-sidebar"></i>
+                        CADASTRO DE UNIDADE
+                        <br/>
+                    </div>
+                    <h:form id="novaUnidadeForm" >
+                        <p:growl id="messages" showDetail="true" />
+
+                        <div class="the-box" style="padding: 5px;" >
+
+
+
+                            <h:panelGrid columns="1" width="50%">
+                                <div class="form-group">
+                                    <h:outputLabel for="nome"
+                                                   value="NOME:"
+                                                   style="font-weight: bold"/>
+                                    <p:inputText id="nome"
+                                                 style="width: 70%"
+                                                 value="#{unidadeBean.unidade.nome}"
+
+                                                 label="nome"/>
+                                    <p:message for="nome" />
+                                </div>
+                            </h:panelGrid>
+
+
+
+
+                            <br/>
+
+                            <p:commandButton id="cadastrar"
+                                             value="Cadastrar"
+                                             action="#{unidadeBean.create()}"
+                                             styleClass="btn btn-primary btn-rounded-lg"
+                                             ajax="false"/>&nbsp;
+                            <p:commandButton id="resetar"
+                                             value="Limpar"
+                                             type="reset"
+                                             styleClass="btn btn-danger btn-rounded-lg"
+                                             ajax="false"/>
+                        </div>
+                    </h:form>
+
+
+
+                            <br/>
+                    <h:form id="unidadesForm">
+                        <p:growl id="messages" showDetail="false"/>
+                        <p:dataTable var="unidades"
+                                     value="#{unidadeBean.unidades}"
+                                     editable="true"
+                                     widgetVar="unidadesTable"
+                                     emptyMessage="Nenhum unidade encontrado"
+                                     style="text-align: center;">
+
+
+
+                            <!-- Coluna com os nomes das unidades -->
+                            <p:column headerText="CÓDIGO:"
+                                      style="width:20px"
+                                      rendered="true"
+                                      filterBy="#{unidades.idunidade}"
+                                      filterMatchMode="contains"
+                                      filterStyle="display:none">
+                                <h:outputText value="#{unidades.idunidade}"/>
+                            </p:column>
+
+
+                            <!-- Coluna com os nomes das unidades -->
+                            <p:column headerText="NOME:"
+                                      style="width:96px"
+                                      rendered="true"
+                                      filterBy="#{unidades.nome}"
+                                      filterMatchMode="contains"
+                                      filterStyle="display:none">
+                                <h:outputText value="#{unidades.nome}"/>
+
+                            </p:column>
+
+
+
+                            <p:column style="width:10px">
+                                <f:facet name="header">
+                                    <span class="ui-icon ui-icon-pencil" title="Editar"></span>
+                                </f:facet>
+                                <p:commandLink id="editButton"
+                                               update=":unidadesForm"
+                                               styleClass="ui-icon ui-icon-pencil"
+                                               title="Editar"
+                                               action="#">
+                                    <f:setPropertyActionListener value="#{unidades}"
+                                                                 target="#{unidadeBean.selectedUnidade}" />
+                                </p:commandLink>
+                            </p:column>
+
+                            <!-- Coluna com o botao de exclusão da unidade (renderizada) -->
+                            <p:column style="width:10px" >
+                                <f:facet name="header">
+                                    <span class="ui-icon ui-icon-trash" title="Excluir"></span>
+                                </f:facet>
+                                <p:commandLink id="deletButton"
+                                               update=":unidadesForm"
+                                               action="#{unidadeBean.remove()}"
+                                               styleClass="ui-icon ui-icon-trash"
+                                               title="Excluir">
+                                    <f:setPropertyActionListener value="#{unidades}"
+                                                                 target="#{unidadeBean.selectedUnidade}" />
+                                </p:commandLink>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </h:form>
+
+
+
+                </div>
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>

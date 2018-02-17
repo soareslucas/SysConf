@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content">
+
+
+                <!-- Page Title -->
+                <div class="section section-breadcrumbs">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Inicio</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div class="section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="boxes">
+                                <div class="service-wrapper">
+                                    <h1><span class="glyphicon glyphicon-stats"></span></h1>						
+                                    <h3>Relatórios</h3>
+                                    <p>Gráfico com base no banco de dados será inserido</p>
+                                    <a href="#" class="btn">Veja Mais</a>
+                                </div>
+                            </div>
+                            <div class="boxes">
+                                <div align='center' class="service-wrapper">
+                                    <h1><span class="glyphicon glyphicon-tasks"></span></h1>
+                                    <h3>Proximas Facções Concluidas</h3>
+
+                                    <p:dataTable var="faccao"
+                                                 value="#{faccaoBean.proximasColetas}"
+                                                 editable="true"
+                                                 widgetVar="coletasTable"
+                                                 emptyMessage="Nenhuma facção a ser coletada!"
+                                                 style="text-align: center; width: 80%;">
+
+
+
+                                        <!-- Coluna com os nomes das unidades -->
+                                        <p:column headerText="NOME FACCIONISTA:"
+                                                  style="width:30px"
+                                                  rendered="true"
+                                                  filterMatchMode="contains"
+                                                  filterStyle="display:none">
+                                            <h:outputText value="#{faccao.faccionista.nome}"/>
+                                        </p:column>
+
+
+                                        <!-- Coluna com os nomes das unidades -->
+                                        <p:column headerText="DATA DA COLETA:"
+                                                  style="width:30px"
+                                                  rendered="true"
+                                                  filterMatchMode="contains"
+                                                  filterStyle="display:none">
+                                            <h:outputText value="#{faccao.dataColeta}">
+                                                <f:convertDateTime pattern="dd/MM/yyyy"
+                                                                   timeZone="America/Sao_Paulo"/>
+                                            </h:outputText>
+
+                                        </p:column>
+
+
+                                        <!-- Coluna com o botao de exclusão da unidade (renderizada) -->
+
+
+                                    </p:dataTable>  <br/>
+                                    
+
+                                    <div class="margeando">
+                                        <a href="faccao-list.xhtml" class="btn">Veja Mais</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
