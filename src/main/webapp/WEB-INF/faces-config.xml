@@ -1,129 +1,265 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<faces-config version="2.2"
-              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-    
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>index</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>page-login</from-outcome>
-            <to-view-id>/page-login.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-  
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>page-404</from-outcome>
-            <to-view-id>/page-404.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    
-    <!-- ================== FACCIONISTA CONFIGURATION ================== -->
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>faccionista-list</from-outcome>
-            <to-view-id>/faccionista-list.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>faccionista-new</from-outcome>
-            <to-view-id>/faccionista-new.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>faccionista-details</from-outcome>
-            <to-view-id>/faccionista-details.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <!-- ================== MODELO CONFIGURATION ================== -->
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>modelo-list</from-outcome>
-            <to-view-id>/modelo-list.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>modelo-new</from-outcome>
-            <to-view-id>/modelo-new.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>modelo-details</from-outcome>
-            <to-view-id>/modelo-details.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>modelo-edit</from-outcome>
-            <to-view-id>/modelo-edit.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <!-- ================== CORTE CONFIGURATION ================== -->
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>corte-list</from-outcome>
-            <to-view-id>/corte-list.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>corte-new</from-outcome>
-            <to-view-id>/corte-new.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>corte-details</from-outcome>
-            <to-view-id>/corte-details.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>corte-edit</from-outcome>
-            <to-view-id>/corte-edit.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
-    
-    
-    
-    
-  
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<application>
+		<message-bundle>resources.application</message-bundle>
+		<locale-config>
+			<default-locale>en</default-locale>
+		</locale-config>
+	</application>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>page-login</from-outcome>
+			<to-view-id>/page-login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>page-404</from-outcome>
+			<to-view-id>/page-404.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+
+	<!-- ================== FACCIONISTA CONFIGURATION ================== -->
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>faccionista-list</from-outcome>
+			<to-view-id>/faccionista-list.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>faccionista-new</from-outcome>
+			<to-view-id>/faccionista-new.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>faccionista-details</from-outcome>
+			<to-view-id>/faccionista-details.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- ================== MODELO CONFIGURATION ================== -->
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>modelo-list</from-outcome>
+			<to-view-id>/modelo-list.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>modelo-new</from-outcome>
+			<to-view-id>/modelo-new.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>modelo-details</from-outcome>
+			<to-view-id>/modelo-details.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>modelo-edit</from-outcome>
+			<to-view-id>/modelo-edit.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- ================== CORTE CONFIGURATION ================== -->
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>corte-list</from-outcome>
+			<to-view-id>/corte-list.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>corte-new</from-outcome>
+			<to-view-id>/corte-new.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>corte-details</from-outcome>
+			<to-view-id>/corte-details.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>corte-edit</from-outcome>
+			<to-view-id>/corte-edit.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+
+	<!-- ================== UNIDADE CONFIGURATION ================== -->
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>unidade-list</from-outcome>
+			<to-view-id>/unidade-list.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>unidade-new</from-outcome>
+			<to-view-id>/unidade-new.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>unidade-details</from-outcome>
+			<to-view-id>/unidade-details.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>unidade-edit</from-outcome>
+			<to-view-id>/unidade-edit.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+
+	<!-- ================== AVIAMENTO CONFIGURATION ================== -->
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>aviamento-list</from-outcome>
+			<to-view-id>/aviamento-list.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>aviamento-new</from-outcome>
+			<to-view-id>/aviamento-new.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>aviamento-details</from-outcome>
+			<to-view-id>/aviamento-details.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>aviamento-edit</from-outcome>
+			<to-view-id>/aviamento-edit.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+
+
+
+
+
+	<!-- ================== FACÇÃO CONFIGURATION ================== -->
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>faccao-list</from-outcome>
+			<to-view-id>/faccao-list.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>faccao-new</from-outcome>
+			<to-view-id>/faccao-new.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>faccao-details</from-outcome>
+			<to-view-id>/faccao-details.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+			<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>faccao-edit</from-outcome>
+			<to-view-id>/faccao.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+
 </faces-config>

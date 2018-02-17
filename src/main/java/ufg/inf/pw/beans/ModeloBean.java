@@ -1,39 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template fotoUploaded, choose Tools | Templates
- * and open the template in the editor.
- */
 package ufg.inf.pw.beans;
 
 import java.io.Serializable;
 import java.sql.SQLException;
-
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import ufg.inf.pw.DAO.ModeloDAO;
-import ufg.inf.pw.model.Modelo;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.primefaces.model.UploadedFile;
+import ufg.inf.pw.DAO.ModeloDAO;
+import ufg.inf.pw.model.Modelo;
 import ufg.inf.pw.utils.FotoUpload;
 
-/**
- *
- * @author Lucas
- */
 @ManagedBean
 @SessionScoped
-public class ModeloBean extends AbstractBean implements Serializable {
+public class ModeloBean extends AbstractBean
+        implements Serializable {
 
-    private Modelo modelo = new Modelo();
+    private Modelo modelo;
     private Modelo selectedModelo;
     private ModeloDAO modeloDAO;
     private List<Modelo> modelos;
     private List<Modelo> filteredModelos;
     private UploadedFile fotoUploaded;
+
+    public ModeloBean() {
+        modelo = new Modelo();
+    }
 
     @PostConstruct
     public void init() {
@@ -64,20 +58,20 @@ public class ModeloBean extends AbstractBean implements Serializable {
         this.selectedModelo = selectedModelo;
     }
 
-    public List<Modelo> getModelos() {
+    public List getModelos() {
         loadModelos();
         return modelos;
     }
 
-    public void setModelos(List<Modelo> modelos) {
+    public void setModelos(List modelos) {
         this.modelos = modelos;
     }
 
-    public List<Modelo> getFilteredModelos() {
+    public List getFilteredModelos() {
         return filteredModelos;
     }
 
-    public void setFilteredModelos(List<Modelo> filteredModelos) {
+    public void setFilteredModelos(List filteredModelos) {
         this.filteredModelos = filteredModelos;
     }
 
@@ -86,14 +80,14 @@ public class ModeloBean extends AbstractBean implements Serializable {
     }
 
     public void setFotoUploaded(UploadedFile foto) {
-        this.fotoUploaded = foto;
+        fotoUploaded = foto;
     }
 
     private void loadModelos() {
         try {
             modelos = getModeloDAO().findAllJDBC();
         } catch (SQLException ex) {
-            Logger.getLogger(ModeloBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ufg.inf.pw.model.Modelo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -120,7 +114,7 @@ public class ModeloBean extends AbstractBean implements Serializable {
         return "modelo-new";
     }
 
-    public List<Modelo> findAll() {
+    public List findAll() {
         loadModelos();
         return modelos;
     }
@@ -129,7 +123,7 @@ public class ModeloBean extends AbstractBean implements Serializable {
         try {
             System.out.println("entrou");
             getModeloDAO().remove(selectedModelo);
-            displayInfoMessageToUser("Modelo excluída com sucesso!");
+            displayInfoMessageToUser("Modelo exclu\355da com sucesso!");
             loadModelos();
             resetModelo();
         } catch (Exception e) {
@@ -144,20 +138,21 @@ public class ModeloBean extends AbstractBean implements Serializable {
     }
 
     public String update() {
-
         getModeloDAO().merge(selectedModelo);
         displayInfoMessageToUser("Modelo atualizado com sucesso!");
         return "modelo-list";
     }
 
-    public void setFotoModelo() throws Exception {
-        this.modelo.setFoto(FotoUpload.FileUploadToImg64(fotoUploaded));
-        System.out.println(this.modelo.getFoto());
+    public void setFotoModelo()
+            throws Exception {
+        modelo.setFoto(FotoUpload.FileUploadToImg64(fotoUploaded));
+        System.out.println(modelo.getFoto());
     }
 
-    public void setFotoModeloEdit() throws Exception {
-        this.selectedModelo.setFoto(FotoUpload.FileUploadToImg64(fotoUploaded));
-        System.out.println(this.modelo.getFoto());
-
+    public void setFotoModeloEdit()
+            throws Exception {
+        selectedModelo.setFoto(FotoUpload.FileUploadToImg64(fotoUploaded));
+        System.out.println(modelo.getFoto());
     }
+
 }

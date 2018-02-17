@@ -1,16 +1,151 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:body>
+        <ui:composition template="common/common-layout.xhtml">
+            <ui:define name="content"> 
+                <br/>
+
+                <!-- Begin breadcrumb -->
+                <ol class="breadcrumb default square rsaquo sm">
+                    <li><a href="index.xhtml">Início</a></li>
+                    <li class="active">Lista de aviamentos</li>
+                </ol>
+                <!-- End breadcrumb -->
+
+                <!-- BEGIN DATA TABLE -->
+                <div class="the-box">
+                    <div class="table-responsive">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <i class="fa fa-code-fork icon-sidebar"></i>
+                                LISTA DE FACCIONISTAS
+                                <br/>
+                            </div>
+                        </div>
+
+
+
+                        <h:form id="aviamentosForm">
+                            <p:growl id="messages" showDetail="false"/>
+                            <p:dataTable var="aviamentos"
+                                         value="#{aviamentoBean.aviamentos}"
+                                         editable="true"
+                                         widgetVar="aviamentosTable"
+                                         emptyMessage="Nenhuma aviamento encontrada"
+                                         paginator="true"
+                                         style="text-align: center;"
+                                         rows="50"
+                                         rowsPerPageTemplate="10, 25, 50, 100"
+                                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         filteredValue="#{aviamentoBean.filteredAviamentos}">
+
+                                <f:facet name="header">
+
+                                    <div class="row" >
+                                        
+                                        <div class="col-lg-6"  align="left">
+                                            <p:commandButton id="novaAviamento"
+                                                             value="Cadastrar nova aviamento"
+                                                             styleClass="btn btn-rounded-lg"
+                                                             action="#{aviamentoBean.newAviamento()}"/>
+                                        </div>                                    
+
+                                        <div class="col-lg-6"   align="right" >
+                                        
+                                                <h:outputText value="Pesquisa: " />
+                                                <p:inputText id="globalFilter"
+                                                             onkeyup="PF('aviamentosTable').filter()"
+                                                             style="width:250px"
+                                                             placeholder="Digite sua busca aqui..."/>
+                                 
+                                        </div>
+
+                                    </div>
+
+                                </f:facet>
+
+                                <p:ajax event="rowEdit" listener="#{aviamentoBean.onRowEdit}" update=":aviamentosForm:messages" />
+                                <p:ajax event="rowEditCancel" listener="#{aviamentoBean.onCancel}" update=":aviamentosForm:messages" />
+
+
+
+                                <!-- Coluna com os nomes das aviamentos -->
+                                <p:column headerText="NOME:"
+                                          style="width:96px"
+                                          rendered="true"
+                                          filterBy="#{aviamentos.nome}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{aviamentos.nome}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:inputText required="true"
+                                                         style="width:100%"
+                                                         value="#{aviamentos.nome}"
+                                                         requiredMessage="Informe o nome da Aviamento"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="UNIDADE DE MEDIDA:"
+                                          style="width:90px"
+                                          rendered="true"
+                                          filterBy="#{aviamentos.unidade.nome}"
+                                          filterMatchMode="contains"
+                                          filterStyle="display:none">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{aviamentos.unidade.nome}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <p:inputText required="true"
+                                                         style="width:100%"
+                                                         value="#{aviamentos.unidade.nome}"
+                                                         requiredMessage="Informe a email da Aviamento"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                             
+
+                                <p:column style="width:10px">
+                                    <f:facet name="header" >
+                                        <span class="ui-icon ui-icon-pencil" title="Editar"></span>
+                                    </f:facet>
+                                    <p:rowEditor id="editor" />
+                                    <p:tooltip for="editor" value="Editar"/>
+                                </p:column>
+
+                                <!-- Coluna com o botao de exclusão da aviamento (renderizada) -->
+                                <p:column style="width:10px" >
+                                    <f:facet name="header">
+                                        <span class="ui-icon ui-icon-trash" title="Excluir"></span>
+                                    </f:facet>
+                                    <p:commandLink id="deletButton"
+                                                   update=":aviamentosForm"
+                                                   action="#{aviamentoBean.remove()}"
+                                                   styleClass="ui-icon ui-icon-trash"
+                                                   title="Excluir">
+                                        <f:setPropertyActionListener value="#{aviamentos}"
+                                                                     target="#{aviamentoBean.selectedAviamento}" />
+                                    </p:commandLink>
+                                </p:column>
+
+
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
+

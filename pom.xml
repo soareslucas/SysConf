@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ufg.inf.pw</groupId>
-    <artifactId>sysconf</artifactId>
-    <version>1.0</version>
+    <artifactId>SysConfec</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>SysConf</name>
+
+    <name>SysConfec</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -17,9 +18,13 @@
         <tomcat-dbcp.version>7.0.42</tomcat-dbcp.version>
         <guava.version>17.0</guava.version>
     </properties>
-    
     <dependencies>
         
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
         
         <!-- PERSISTENCE -->
         <dependency>
@@ -47,6 +52,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.31</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>${tomcat-dbcp.version}</version>
+        </dependency>
 
         <!-- VALIDATION -->
         <dependency>
@@ -62,6 +72,12 @@
             <version>${guava.version}</version>
         </dependency>
         
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>4.8.0</version>
+        </dependency>
+
         
 
         <!-- OTHERS -->
@@ -84,9 +100,9 @@
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>hibernate-jpamodelgen-4.3.1.Final</artifactId>
-            <version>SNAPSHOT</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>4.3.1.Final</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -137,8 +153,14 @@
             <artifactId>all-themes</artifactId>  
             <version>1.0.10</version>  
         </dependency>
+        <!--dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <type>maven-plugin</type>
+        </dependency-->
         
-        <!-- SPRING + SPRING SECURITY 
+        <!-- SPRING + SPRING SECURITY -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
@@ -169,8 +191,6 @@
             <artifactId>spring-security-config</artifactId>
             <version>3.2.0.RELEASE</version>
         </dependency>
-        
-        -->
 
 
         <dependency>
@@ -211,26 +231,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.6</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
+
             </plugin>
         </plugins>
     </build>

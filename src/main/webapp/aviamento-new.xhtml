@@ -25,41 +25,45 @@
                         CADASTRO DE AVIAMENTO
                         <br/>
                     </div>
-                    <h:form id="novaAviamentoForm"  enctype="multipart/form-data" >
+                    <h:form id="novaAviamentoForm"  >
                         <p:growl id="messages" showDetail="true" />
 
                         <div class="the-box" style="padding: 5px;" >
 
                             <h:panelGrid columns="1" width="50%">      
+
                                 <div class="form-group">
-                                    <h:outputLabel for="modelo"
-                                                   value="SELECIONE UM MODELO:"
+                                   <h:outputLabel for="unidade"
+                                                   value="SELECIONE UM UNIDADE:"
                                                    style="font-weight: bold"/><br/>
                                     <h:selectOneMenu    
                                         style="width: 70%" 
-                                        id="modelo"
+                                        id="unidade"
                                         required="true"
                                         styleClass="form-control"
-                                        value="#{aviamentoBean.aviamento.modelo.idmodelo}"
-                                        requiredMessage="Selecione a modelo composto pelo novo aviamento"
-                                        label="modelo">
+                                        value="#{aviamentoBean.aviamento.unidade.idunidade}"
+                                        requiredMessage="Selecione a unidade composto pelo novo corte"
+                                        label="unidade">
                                         <f:selectItem itemLabel="Selecione" itemValue="" />
-                                        <a href="aviamento-new.xhtml"></a>
-                                        <f:selectItems value="#{aviamentoBean.modelos}"
-                                                       var="modelo"
-                                                       itemLabel="Código:(#{modelo.idmodelo}) | Nome: #{modelo.nome}"
-                                                       itemValue="#{modelo.idmodelo}"/>
+                                        <a href="corte-new.xhtml"></a>
+                                        <f:selectItems value="#{unidadeBean.unidades}"
+                                                       var="unidade"
+                                                       itemLabel="Código:(#{unidade.idunidade}) | Nome: #{unidade.nome}"
+                                                       itemValue="#{unidade.idunidade}"/>
                                     </h:selectOneMenu>
-                                    <p:message for="modelo" />
-
-
-
-
-
-
+                                    <p:message for="unidade" />
 
                                 </div>
                             </h:panelGrid>  
+
+
+                            <br/>
+                            <h:panelGrid columns="2" width="32%">
+                                <p:button outcome="unidade-new" value="Cadastrar novas unidades de medida" styleClass="btn btn-primary btn-rounded-lg">
+
+                                </p:button>
+                            </h:panelGrid>
+
 
                             <h:panelGrid columns="1" width="50%">
                                 <div class="form-group">
@@ -74,40 +78,6 @@
                                     <p:message for="nome" />
                                 </div>
                             </h:panelGrid>
-
-
-                            <h:panelGrid columns="1" width="50%">
-                                <div class="form-group">
-                                    <h:outputLabel 
-                                        value="FOTO:"
-                                        style="font-weight: bold"/> 
-                                    <h:outputLabel 
-                                        value="Carregar foto primeiro antes de cadastrar o aviamento."
-                                        style="font-weight: normal"/> 
-
-
-                                    <p:fileUpload value="#{aviamentoBean.fotoUploaded}" mode="simple" />
-                                    <br/>
-                                    <p:commandButton   styleClass="btn btn-primary" value="Carregar Foto" ajax="false" actionListener="#{aviamentoBean.setFotoAviamento()}" disabled="false" />
-                                    <br/>
-                                    <img  src='data:image/jpeg;image/jpg;image/png;base64, ${aviamentoBean.aviamento.foto}'  alt="" class="img-responsive" />
-
-                                    <h:outputLabel 
-                                        value="Obs.: Só são permitidas fotos no formato JPG ou JPEG!"
-                                        style="font-style: italic; font-weight: normal"/> 
-
-                                </div>
-                            </h:panelGrid>
-
-
-
-
-
-
-
-
-
-
 
                             <br/>
 

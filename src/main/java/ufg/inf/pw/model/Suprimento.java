@@ -1,5 +1,5 @@
 package ufg.inf.pw.model;
-// Generated Jun 9, 2015 1:36:21 PM by Hibernate Tools 4.3.1
+// Generated Jul 9, 2015 7:28:52 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

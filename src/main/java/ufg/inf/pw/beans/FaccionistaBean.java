@@ -1,38 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ufg.inf.pw.beans;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import org.primefaces.event.RowEditEvent;
-import org.primefaces.event.SelectEvent;
 import ufg.inf.pw.DAO.FaccionistaDAO;
 import ufg.inf.pw.model.Faccionista;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-
-/**
- *
- * @author Lucas
- */
 @ManagedBean
 @SessionScoped
-public class FaccionistaBean extends AbstractBean implements Serializable {
+public class FaccionistaBean extends AbstractBean
+        implements Serializable {
 
-    private Faccionista faccionista = new Faccionista();
+    private Faccionista faccionista;
     private Faccionista selectedFaccionista;
     private FaccionistaDAO faccionistaDAO;
     private List<Faccionista> faccionistas;
     private List<Faccionista> filteredFaccionistas;
 
+    public FaccionistaBean() {
+        faccionista = new Faccionista();
+    }
+    
     @PostConstruct
     public void init() {
         faccionistaDAO = new FaccionistaDAO();
@@ -62,20 +53,20 @@ public class FaccionistaBean extends AbstractBean implements Serializable {
         this.selectedFaccionista = selectedFaccionista;
     }
 
-    public List<Faccionista> getFaccionistas() {
+    public List getFaccionistas() {
         loadFaccionistas();
         return faccionistas;
     }
 
-    public void setFaccionistas(List<Faccionista> faccionistas) {
+    public void setFaccionistas(List faccionistas) {
         this.faccionistas = faccionistas;
     }
 
-    public List<Faccionista> getFilteredFaccionistas() {
+    public List getFilteredFaccionistas() {
         return filteredFaccionistas;
     }
 
-    public void setFilteredFaccionistas(List<Faccionista> filteredFaccionistas) {
+    public void setFilteredFaccionistas(List filteredFaccionistas) {
         this.filteredFaccionistas = filteredFaccionistas;
     }
 
@@ -105,7 +96,7 @@ public class FaccionistaBean extends AbstractBean implements Serializable {
         return "faccionista-new";
     }
 
-    public List<Faccionista> findAll() {
+    public List findAll() {
         loadFaccionistas();
         return faccionistas;
     }
@@ -114,7 +105,7 @@ public class FaccionistaBean extends AbstractBean implements Serializable {
         try {
             System.out.println("entrou");
             getFaccionistaDAO().remove(selectedFaccionista);
-            displayInfoMessageToUser("Faccionista excluída com sucesso!");
+            displayInfoMessageToUser("Faccionista exclu\355da com sucesso!");
             loadFaccionistas();
             resetFaccionista();
         } catch (Exception e) {
@@ -129,7 +120,6 @@ public class FaccionistaBean extends AbstractBean implements Serializable {
     }
 
     public void onRowEdit(RowEditEvent event) {
-        System.out.println("entrou");
         Faccionista faccionistaAlterado = (Faccionista) event.getObject();
         getFaccionistaDAO().merge(faccionistaAlterado);
         displayInfoMessageToUser("Faccionista atualizada com sucesso!");
@@ -137,12 +127,6 @@ public class FaccionistaBean extends AbstractBean implements Serializable {
 
     public void onCancel(RowEditEvent event) {
         displayInfoMessageToUser("Atualização cancelada com sucesso!");
-    }
-
-    public void onDateSelect(SelectEvent event) {
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
     }
 
 }

@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 9, 2015 1:36:27 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jul 9, 2015 7:28:54 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ufg.inf.pw.model.Aviamento" table="aviamento" catalog="confeccao" optimistic-lock="version">
         <id name="idaviamento" type="java.lang.Integer">
             <column name="idaviamento" />
             <generator class="identity" />
         </id>
+        <many-to-one name="unidade" class="ufg.inf.pw.model.Unidade" fetch="select">
+            <column name="unidade_idunidade" />
+        </many-to-one>
         <property name="nome" type="string">
             <column name="nome" length="45" />
-        </property>
-        <property name="unidadeMedida" type="string">
-            <column name="unidade_medida" length="45" />
         </property>
         <set name="suprimentos" table="suprimento" inverse="true" lazy="true" fetch="select">
             <key>

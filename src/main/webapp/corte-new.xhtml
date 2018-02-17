@@ -45,18 +45,12 @@
                                         label="modelo">
                                         <f:selectItem itemLabel="Selecione" itemValue="" />
                                         <a href="corte-new.xhtml"></a>
-                                        <f:selectItems value="#{corteBean.modelos}"
+                                        <f:selectItems value="#{modeloBean.modelos}"
                                                        var="modelo"
                                                        itemLabel="Código:(#{modelo.idmodelo}) | Nome: #{modelo.nome}"
                                                        itemValue="#{modelo.idmodelo}"/>
                                     </h:selectOneMenu>
                                     <p:message for="modelo" />
-
-
-
-
-
-
 
                                 </div>
                             </h:panelGrid>  
