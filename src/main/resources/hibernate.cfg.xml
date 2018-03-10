@@ -4,9 +4,9 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/confeccao</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.url">jdbc:mysql://h40lg7qyub2umdvb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vbfxkofxl6mugbcc</property>
+        <property name="hibernate.connection.username">jejpexoh3c1wg4uw</property>
+        <property name="hibernate.connection.password">cbxqrdoewt8cme73</property>
     
         <!-- CONFIGURACAO --> 
         <property name="hibernate.dialect" >org.hibernate.dialect.MySQL5Dialect</property>

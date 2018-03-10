@@ -14,6 +14,9 @@
     <servlet-name>javax.faces.FacesServlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
+
+
+
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>

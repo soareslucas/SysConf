@@ -15,16 +15,10 @@
         <hibernate.version>4.3.5.Final</hibernate.version>
         <hibernate-validator.version>5.1.1.Final</hibernate-validator.version>
         <javassist.version>3.18.1-GA</javassist.version>
-        <tomcat-dbcp.version>7.0.42</tomcat-dbcp.version>
+        <tomcat-dbcp.version>8.0.50</tomcat-dbcp.version>
         <guava.version>17.0</guava.version>
     </properties>
     <dependencies>
-        
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.7</version>
-        </dependency>
         
         <!-- PERSISTENCE -->
         <dependency>
@@ -64,41 +58,21 @@
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
-        
-        <!-- UTILS -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>4.8.0</version>
-        </dependency>
 
-        
 
         <!-- OTHERS -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp.jstl</groupId>
-            <artifactId>javax.servlet.jsp.jstl-api</artifactId>
-            <version>1.2.1</version>
-        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>log4j</groupId> -->
+<!--             <artifactId>log4j</artifactId> -->
+<!--             <version>1.2.17</version> -->
+<!--         </dependency> -->
+<!--         <dependency> -->
+<!--             <groupId>javax.servlet.jsp.jstl</groupId> -->
+<!--             <artifactId>javax.servlet.jsp.jstl-api</artifactId> -->
+<!--             <version>1.2.1</version> -->
+<!--         </dependency> -->
         
         <!-- JAVA - JSF -->
-        <dependency>
-            <groupId>com.google.collections</groupId>
-            <artifactId>google-collections</artifactId>
-            <version>1.0</version>
-            <type>jar</type>
-        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
@@ -108,19 +82,19 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
+            <version>8.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-api</artifactId>
-            <version>2.2.6</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.faces</groupId>
-            <artifactId>jsf-impl</artifactId>
-            <version>2.2.0-m03</version>
-        </dependency>
+		<dependency> 
+		    <groupId>com.sun.faces</groupId> 
+		    <artifactId>jsf-api</artifactId> 
+		    <version>2.2.13</version> 
+		</dependency> 
+		<dependency> 
+		    <groupId>com.sun.faces</groupId> 
+		    <artifactId>jsf-impl</artifactId> 
+		    <version>2.2.13</version> 
+		</dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -153,45 +127,6 @@
             <artifactId>all-themes</artifactId>  
             <version>1.0.10</version>  
         </dependency>
-        <!--dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.1</version>
-            <type>maven-plugin</type>
-        </dependency-->
-        
-        <!-- SPRING + SPRING SECURITY -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>3.2.5.RELEASE</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>3.2.0.RELEASE</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>3.2.0.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>3.2.0.RELEASE</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>3.2.0.RELEASE</version>
-        </dependency>
-
 
         <dependency>
             <groupId>commons-logging</groupId>
@@ -212,8 +147,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>
