@@ -10,7 +10,7 @@
     <name>SysConfec</name>
 
     <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+<!--         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir> -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <hibernate.version>4.3.5.Final</hibernate.version>
         <hibernate-validator.version>5.1.1.Final</hibernate-validator.version>
@@ -149,9 +149,9 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
+<!--                     <compilerArguments> -->
+<!--                         <endorseddirs>${endorsed.dir}</endorseddirs> -->
+<!--                     </compilerArguments> -->
                 </configuration>
             </plugin>
             <plugin>
