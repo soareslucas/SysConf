@@ -4,9 +4,9 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://us-cdbr-iron-east-05.cleardb.net:3306/heroku_3f94586f6e11e92</property>
-        <property name="hibernate.connection.username">b63c59573d7f16</property>
-        <property name="hibernate.connection.password">efe9e0ac</property>
+        <property name="hibernate.connection.url">jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3226347</property>
+        <property name="hibernate.connection.username">sql3226347</property>
+        <property name="hibernate.connection.password">QtUx3UDl6v</property>
     
         <!-- CONFIGURACAO --> 
         <property name="hibernate.dialect" >org.hibernate.dialect.MySQL5Dialect</property>

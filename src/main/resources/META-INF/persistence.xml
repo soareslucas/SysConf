@@ -8,9 +8,9 @@
         <properties>
             <!-- DADOS CONEXAO -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://hus-cdbr-iron-east-05.cleardb.net:3306/heroku_3f94586f6e11e92" />
-            <property name="javax.persistence.jdbc.user" value="b63c59573d7f16" />
-            <property name="javax.persistence.jdbc.password" value="efe9e0ac" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3226347" />
+            <property name="javax.persistence.jdbc.user" value="sql3226347" />
+            <property name="javax.persistence.jdbc.password" value="QtUx3UDl6v" />
             
             <!-- CONFIGURACAO --> 
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
