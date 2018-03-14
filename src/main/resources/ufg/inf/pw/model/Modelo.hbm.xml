@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 9, 2015 7:28:54 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="ufg.inf.pw.model.Modelo" table="modelo" catalog="sql3226347" optimistic-lock="version">
+    <class name="ufg.inf.pw.model.Modelo" table="modelo" catalog="confeccao" optimistic-lock="version">
         <id name="idmodelo" type="java.lang.Integer">
             <column name="idmodelo" />
             <generator class="identity" />
@@ -15,7 +15,7 @@
             <column name="descricao" length="500" />
         </property>
         <property name="foto" type="string">
-            <column name="foto" length="65535" />
+            <column name="foto" />
         </property>
         <set name="pecas" table="peca" inverse="true" lazy="true" fetch="select">
             <key>

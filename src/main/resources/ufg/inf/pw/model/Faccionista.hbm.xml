@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 9, 2015 7:28:54 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="ufg.inf.pw.model.Faccionista" table="faccionista" catalog="sql3226347" optimistic-lock="version">
+    <class name="ufg.inf.pw.model.Faccionista" table="faccionista" catalog="confeccao" optimistic-lock="version">
         <id name="idfaccionista" type="java.lang.Integer">
             <column name="idfaccionista" />
             <generator class="identity" />
