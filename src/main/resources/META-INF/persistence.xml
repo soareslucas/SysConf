@@ -8,6 +8,7 @@
         <properties>
             <!-- DADOS CONEXAO -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://db4free.net:3306/confeccao" />
             <property name="javax.persistence.jdbc.user" value="lucassoares" />
             <property name="javax.persistence.jdbc.password" value="Ls-12063105" />

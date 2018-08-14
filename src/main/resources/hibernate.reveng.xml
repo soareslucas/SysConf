@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
-<!--   <schema-selection match-catalog="sql3226347"/> -->
-    <schema-selection match-catalog="confeccao"/>
+  <schema-selection match-catalog="confeccao"/>
   <table-filter match-name="faccao_has_suprimento"/>
   <table-filter match-name="peca"/>
   <table-filter match-name="unidade"/>
