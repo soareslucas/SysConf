@@ -19,7 +19,7 @@
           max-connection-usage-count="0"
            max-pool-size="32"
             max-wait-time-in-millis="60000"
-             name="sifisPool" non-transactional-connections="false"
+             name="sysconfPool" non-transactional-connections="false"
               pool-resize-quantity="2"
                res-type="javax.sql.ConnectionPoolDataSource"
                 statement-timeout-in-seconds="-1"
