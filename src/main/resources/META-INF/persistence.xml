@@ -8,13 +8,13 @@
         <properties>
             <!-- DADOS CONEXAO -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-<!--             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3226347" /> -->
-<!--             <property name="javax.persistence.jdbc.user" value="sql3226347" /> -->
-<!--             <property name="javax.persistence.jdbc.password" value="QtUx3UDl6v" /> -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://db4free.net:3306/confeccao" />
+            <property name="javax.persistence.jdbc.user" value="lucassoares" />
+            <property name="javax.persistence.jdbc.password" value="Ls-12063105" />
 
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/confeccao" />
-            <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="" />
+<!--             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/confeccao" /> -->
+<!--             <property name="javax.persistence.jdbc.user" value="root" /> -->
+<!--             <property name="javax.persistence.jdbc.password" value="" /> -->
 
             
             <!-- CONFIGURACAO --> 
