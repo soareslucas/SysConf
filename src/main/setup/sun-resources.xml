@@ -27,14 +27,15 @@
                   validate-atmost-once-period-in-seconds="0"
                    wrap-jdbc-objects="false">
                    
-<!--     <property name="URL" value="jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3226347"/> -->
-<!--     <property name="User" value="sql3226347"/> -->
-<!--     <property name="Password" value="QtUx3UDl6v"/> -->
+
+    <property name="URL" value="jdbc:mysql://db4free.net:3306/confeccao"/>
+    <property name="User" value="lucassoares"/>
+    <property name="Password" value="Ls-12063105"/>
 
 
-    <property name="URL" value="jdbc:mysql://localhost:3306/confeccao"/>
+    <!-- <property name="URL" value="jdbc:mysql://localhost:3306/confeccao"/>
     <property name="User" value="root"/>
-    <property name="Password" value=""/>
+    <property name="Password" value=""/ -->
 
 
 
