@@ -39,43 +39,7 @@
                                     <h1><span class="glyphicon glyphicon-tasks"></span></h1>
                                     <h3>Proximas Facções Concluidas</h3>
 
-                                    <p:dataTable var="faccao"
-                                                 value="#{faccaoBean.proximasColetas}"
-                                                 editable="true"
-                                                 widgetVar="coletasTable"
-                                                 emptyMessage="Nenhuma facção a ser coletada!"
-                                                 style="text-align: center; width: 80%;">
 
-
-
-                                        <!-- Coluna com os nomes das unidades -->
-                                        <p:column headerText="NOME FACCIONISTA:"
-                                                  style="width:30px"
-                                                  rendered="true"
-                                                  filterMatchMode="contains"
-                                                  filterStyle="display:none">
-                                            <h:outputText value="#{faccao.faccionista.nome}"/>
-                                        </p:column>
-
-
-                                        <!-- Coluna com os nomes das unidades -->
-                                        <p:column headerText="DATA DA COLETA:"
-                                                  style="width:30px"
-                                                  rendered="true"
-                                                  filterMatchMode="contains"
-                                                  filterStyle="display:none">
-                                            <h:outputText value="#{faccao.dataColeta}">
-                                                <f:convertDateTime pattern="dd/MM/yyyy"
-                                                                   timeZone="America/Sao_Paulo"/>
-                                            </h:outputText>
-
-                                        </p:column>
-
-
-                                        <!-- Coluna com o botao de exclusão da unidade (renderizada) -->
-
-
-                                    </p:dataTable>  <br/>
                                     
 
                                     <div class="margeando">
