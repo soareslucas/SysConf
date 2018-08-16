@@ -28,9 +28,9 @@
                    wrap-jdbc-objects="false">
                    
 
-    <property name="URL" value="jdbc:mysql://db4free.net:3306/confeccao"/>
-    <property name="User" value="lucassoares"/>
-    <property name="Password" value="Ls-12063105"/>
+    <property name="URL" value="jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10252135"/>
+    <property name="User" value="sql10252135"/>
+    <property name="Password" value="5ThEc8KQJ8"/>
 
 
     <!-- <property name="URL" value="jdbc:mysql://localhost:3306/confeccao"/>

@@ -5,9 +5,9 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         
-        <property name="hibernate.connection.url">jdbc:mysql://db4free.net:3306/confeccao</property>
-        <property name="hibernate.connection.username">lucassoares</property>
-        <property name="hibernate.connection.password">Ls-12063105</property>
+        <property name="hibernate.connection.url">jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10252135</property>
+        <property name="hibernate.connection.username">sql10252135</property>
+        <property name="hibernate.connection.password">5ThEc8KQJ8</property>
        
        
 <!--         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/confeccao</property> -->
