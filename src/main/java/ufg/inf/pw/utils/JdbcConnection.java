@@ -14,7 +14,7 @@ public class JdbcConnection
     {
         try
         {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/confeccao", "root", "");
+            return DriverManager.getConnection("jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3252298", "sql3252298", "DLb4wm9Bn9");
         }
         catch(SQLException e)
         {
